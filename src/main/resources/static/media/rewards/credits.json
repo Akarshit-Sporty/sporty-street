@@ -1,0 +1,61 @@
+[
+  {
+    "imageUrl": "/media/rewards/free-bet.png",
+    "sourcePage": "User-provided reference: image.png",
+    "author": "SportyBet reference artwork supplied by user",
+    "license": "User-supplied asset; no third-party licence asserted",
+    "modification": "None",
+    "sha256": "d74972b66f664a15efe030b60dadf21de7b3a27116a8d99c7e9b2061cdf36f2f"
+  },
+  {
+    "imageUrl": "/media/rewards/cashback.png",
+    "sourcePage": "User-provided reference: image (1).png",
+    "author": "SportyBet reference artwork supplied by user",
+    "license": "User-supplied asset; no third-party licence asserted",
+    "modification": "None",
+    "sha256": "fd31b1fad1fe7d163dc5e18154f777070e26e135fa1d0e4aef7c1d0542b9d65a"
+  },
+  {
+    "imageUrl": "/media/rewards/referral.png",
+    "sourcePage": "User-provided reference: image (2).png",
+    "author": "SportyBet reference artwork supplied by user",
+    "license": "User-supplied asset; no third-party licence asserted",
+    "modification": "None",
+    "sha256": "5a0a636ee387cb483b58e0ddaf97a672bdba19e1e1015e546d4801c516b615ff"
+  },
+  {
+    "imageUrl": "/media/rewards/wheel.png",
+    "sourcePage": "User-provided reference: image (3).png",
+    "author": "SportyBet reference artwork supplied by user",
+    "license": "User-supplied asset; no third-party licence asserted",
+    "modification": "None",
+    "sha256": "bf3dcdcb4d8b3b934feac20a8ee609b913b453e2da2e97d68452d0fd84c09b9a"
+  },
+  {
+    "imageUrl": "/media/rewards/red-cap.png",
+    "sourcePage": "https://beechfield.com/products/b10",
+    "originalUrl": "https://d2csxpduxe849s.cloudfront.net/media/BBD46EA3-F7E7-441D-8663C747FAEA082D/B917028F-26C0-4EE5-989F8FC7ACF26A36/A7FF2A5F-BECA-45D9-86B9FDB454A7DF7D/webimage-51EFE05B-6468-4D7E-9A06B883E262AAFF.png",
+    "author": "Beechfield",
+    "license": "Product reference image; copyright retained by source owner",
+    "modification": "None",
+    "sha256": "5a76402506a5160f7161e05b06e354d0af1ee3d0c207c3f9bd8a1acf47e31364"
+  },
+  {
+    "imageUrl": "/media/rewards/red-shirt.jpg",
+    "sourcePage": "https://www.gildan.se/en/gi5000-en-red",
+    "originalUrl": "https://www.gildan.se/sites/default/files/styles/product-node/public/5000_199c_040_g2025_ld_0.jpg?itok=4-AzlhNS",
+    "author": "Gildan / Trendmark",
+    "license": "Product reference image; copyright retained by source owner",
+    "modification": "None",
+    "sha256": "06c27581165df6cebfeb1869b91b5be48fa23daf7c25fb6da45b84f095342602"
+  },
+  {
+    "imageUrl": "/media/rewards/red-hoodie.jpg",
+    "sourcePage": "https://www.gildan.se/en/gi18500-en-red",
+    "originalUrl": "https://www.gildan.se/sites/default/files/styles/product-node/public/18500_199c_040_g2025_ld_0.jpg?itok=tnmyMCh1",
+    "author": "Gildan / Trendmark",
+    "license": "Product reference image; copyright retained by source owner",
+    "modification": "None",
+    "sha256": "a014cbdfb15122fad9e56bded8d84580eed2cf16e04a329c96b2ff41b393b14a"
+  }
+]

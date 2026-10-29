@@ -60,13 +60,15 @@ public class SecurityConfig {
                       org.springframework.http.HttpMethod.GET,
                       "/media/players/**",
                       "/media/avatars/**",
-                      "/media/leagues/**")
+                      "/media/leagues/**",
+                      "/media/rewards/**")
                   .permitAll();
               auth.requestMatchers(
                       org.springframework.http.HttpMethod.HEAD,
                       "/media/players/**",
                       "/media/avatars/**",
-                      "/media/leagues/**")
+                      "/media/leagues/**",
+                      "/media/rewards/**")
                   .permitAll();
               if (local) {
                 auth.requestMatchers(

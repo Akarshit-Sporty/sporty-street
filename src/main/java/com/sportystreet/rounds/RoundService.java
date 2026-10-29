@@ -20,13 +20,23 @@ public class RoundService {
       Rules rules,
       long stateVersion,
       Instant serverTime,
-      List<CatalogueService.FixtureResponse> fixtures) {}
+      List<CatalogueService.FixtureResponse> fixtures,
+      String format,
+      int matchCount,
+      long participantCount,
+      boolean simulated) {}
 
   private final RoundRepository rounds;
   private final CatalogueService catalogue;
   private final Clock clock;
+  private final org.springframework.jdbc.core.JdbcTemplate db;
 
-  public RoundService(RoundRepository rounds, CatalogueService catalogue, Clock clock) {
+  public RoundService(
+      RoundRepository rounds,
+      CatalogueService catalogue,
+      Clock clock,
+      org.springframework.jdbc.core.JdbcTemplate db) {
+    this.db = db;
     this.rounds = rounds;
     this.catalogue = catalogue;
     this.clock = clock;
@@ -42,6 +52,22 @@ public class RoundService {
   }
 
   public PageResponse<RoundResponse> list(String status, int page, int size) {
+    return list(status, null, null, "UTC", page, size);
+  }
+
+  public PageResponse<RoundResponse> list(
+      String status, String period, String format, String timeZone, int page, int size) {
+    if (period != null && !Set.of("TODAY", "TOMORROW", "THIS_WEEK").contains(period))
+      throw new ApiException(400, "VALIDATION_FAILED", "Invalid period");
+    if (format != null && !Set.of("QUICK", "MATCHDAY", "SPECIAL").contains(format))
+      throw new ApiException(400, "VALIDATION_FAILED", "Invalid format");
+    ZoneId zone;
+    try {
+      zone = ZoneId.of(timeZone);
+    } catch (DateTimeException e) {
+      throw new ApiException(400, "VALIDATION_FAILED", "Invalid timeZone");
+    }
+    var today = LocalDate.now(clock.withZone(zone));
     if (status != null && !Set.of("OPEN", "LIVE", "SETTLED").contains(status))
       throw new ApiException(400, "VALIDATION_FAILED", "Invalid round status");
     return PageResponse.of(
@@ -55,7 +81,18 @@ public class RoundService {
                 Comparator.comparing((RoundEntity r) -> !r.status.equals("LIVE"))
                     .thenComparing(r -> r.entryDeadline)
                     .thenComparing(r -> r.id))
+            .filter(
+                r -> {
+                  if (period == null) return true;
+                  var date = r.entryDeadline.atZone(zone).toLocalDate();
+                  return switch (period) {
+                    case "TODAY" -> date.equals(today);
+                    case "TOMORROW" -> date.equals(today.plusDays(1));
+                    default -> !date.isBefore(today) && date.isBefore(today.plusDays(7));
+                  };
+                })
             .map(this::response)
+            .filter(r -> format == null || format.equals(r.format()))
             .toList(),
         page,
         size);
@@ -122,6 +159,15 @@ public class RoundService {
         r.rules,
         r.stateVersion,
         clock.instant(),
-        catalogue.fixtures(r.id));
+        catalogue.fixtures(r.id),
+        db
+            .queryForList(
+                "select format from round_presentation where round_id=?", String.class, r.id)
+            .stream()
+            .findFirst()
+            .orElse("MATCHDAY"),
+        catalogue.fixtures(r.id).size(),
+        db.queryForObject("select count(*) from team where round_id=?", Long.class, r.id),
+        true);
   }
 }

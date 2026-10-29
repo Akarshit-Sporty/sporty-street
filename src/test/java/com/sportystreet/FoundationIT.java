@@ -22,10 +22,12 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.postgresql.PostgreSQLContainer;
 
-@SpringBootTest
+@SpringBootTest(properties = "sporty.showcase.enabled=false")
 @ActiveProfiles("local")
 @AutoConfigureMockMvc
 @Testcontainers
+@org.springframework.test.annotation.DirtiesContext(
+    classMode = org.springframework.test.annotation.DirtiesContext.ClassMode.AFTER_CLASS)
 class FoundationIT {
   @Container
   static final PostgreSQLContainer POSTGRES = new PostgreSQLContainer("postgres:16-alpine");
@@ -79,7 +81,7 @@ class FoundationIT {
   void seedIsRepeatable() {
     seed.run(null);
     seed.run(null);
-    assertThat(db.queryForObject("select count(*) from app_user", Integer.class)).isEqualTo(8);
+    assertThat(db.queryForObject("select count(*) from app_user", Integer.class)).isEqualTo(10);
     assertThat(db.queryForObject("select count(*) from country", Integer.class)).isEqualTo(21);
   }
 
@@ -103,8 +105,16 @@ class FoundationIT {
         .containsEntry("country", "FRA");
     assertThat(db.queryForList("select name from app_round order by name", String.class))
         .containsExactly("Champions Night", "European Superstars");
-    assertThat(db.queryForList("select name from gift order by price_rp", String.class))
-        .containsExactly("Matchday Coffee", "Football Store Discount", "Club Scarf");
+    assertThat(
+            db.queryForList("select name from gift where active order by price_rp", String.class))
+        .containsExactlyInAnyOrder(
+            "Referral Reward",
+            "Free Bet",
+            "Cashback",
+            "Lucky Wheel",
+            "Sporty Red Cap",
+            "Sporty Red T-shirt",
+            "Sporty Red Hoodie");
     mvc.perform(get("/media/players/credits.json"))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.length()").value(60));

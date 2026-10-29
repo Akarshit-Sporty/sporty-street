@@ -27,11 +27,13 @@ import org.testcontainers.junit.jupiter.*;
 import org.testcontainers.postgresql.PostgreSQLContainer;
 import tools.jackson.databind.ObjectMapper;
 
-@SpringBootTest
+@SpringBootTest(properties = "sporty.showcase.enabled=false")
 @ActiveProfiles({"local", "test"})
 @AutoConfigureMockMvc
 @Import(GameplayIT.TimeConfig.class)
 @Testcontainers
+@org.springframework.test.annotation.DirtiesContext(
+    classMode = org.springframework.test.annotation.DirtiesContext.ClassMode.AFTER_CLASS)
 class GameplayIT {
   @Container
   static final PostgreSQLContainer POSTGRES = new PostgreSQLContainer("postgres:16-alpine");
@@ -93,6 +95,13 @@ class GameplayIT {
     live.closeAll();
     clock.now = START;
     reset.reset();
+    for (int i = 0; i < 3; i++)
+      db.update(
+          "insert into gift(id,name,description,category,price_rp) values(?, ?, 'Test purchase"
+              + " fixture','TEST',?)",
+          DemoSeed.id("gift:" + i),
+          "Test gift " + i,
+          50 * (i + 1));
   }
 
   @AfterEach

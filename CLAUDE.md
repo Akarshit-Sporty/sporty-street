@@ -17,7 +17,9 @@ it is the source of truth.** The overriding priority is simplicity and a working
 - Do not build out-of-scope/later features or scaffolding for them.
 - The 2026-10-29 scope includes read-only simulated social APIs (PLAN §12): avatars, leagues,
   rivalries, Banter and manager discovery. Keep them explicit previews; no social writes or
-  fan-points wallet. Do not expose another user's saved lineup through preview endpoints.
+  fan-points wallet. The later 2026-10-29 request also authorizes persisted friends and round
+  invitations, profile/history/XP, scheduled sample rounds and tiered rewards (PLAN §13).
+  Do not expose another user's saved lineup through preview endpoints.
 
 ## Conventions
 - Java 21, Spring Boot 4.0.x, Maven wrapper; base package `com.sportystreet`.

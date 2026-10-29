@@ -17,7 +17,32 @@ public class RewardService {
   public record Wallet(int balanceRp) {}
 
   public record Gift(
-      UUID id, String name, String description, String category, String imageUrl, int priceRp) {}
+      UUID id,
+      String name,
+      String description,
+      String category,
+      String imageUrl,
+      int priceRp,
+      int requiredPoints,
+      boolean onePerUser) {}
+
+  public record Offer(
+      Gift gift,
+      boolean unlocked,
+      boolean affordable,
+      boolean claimed,
+      boolean canClaim,
+      long pointsNeeded,
+      int rpNeeded,
+      String lockReason) {}
+
+  public record Category(String code, String name, String currency) {}
+
+  public record Catalogue(
+      Wallet wallet,
+      com.sportystreet.profile.ProfileService.Ranking leaderboard,
+      java.util.List<Category> categories,
+      java.util.List<Offer> items) {}
 
   public record Purchase(
       UUID id, UUID giftId, String giftName, int priceRp, String voucherCode, Instant createdAt) {}
@@ -29,8 +54,11 @@ public class RewardService {
 
   private final JdbcTemplate db;
   private final Clock clock;
+  private final com.sportystreet.profile.ProfileService profiles;
 
-  public RewardService(JdbcTemplate db, Clock clock) {
+  public RewardService(
+      JdbcTemplate db, Clock clock, com.sportystreet.profile.ProfileService profiles) {
+    this.profiles = profiles;
     this.db = db;
     this.clock = clock;
   }
@@ -97,6 +125,43 @@ public class RewardService {
         size);
   }
 
+  public Catalogue catalogue(UUID user) {
+    var wallet = wallet(user);
+    var rank = profiles.ranking(user);
+    var claimed =
+        new HashSet<>(
+            db.queryForList("select gift_id from gift_purchase where user_id=?", UUID.class, user));
+    var offers =
+        gifts(null, 0, 100).items().stream()
+            .map(
+                g -> {
+                  boolean unlocked = rank.points() >= g.requiredPoints(),
+                      affordable = wallet.balanceRp() >= g.priceRp(),
+                      done = g.onePerUser() && claimed.contains(g.id());
+                  return new Offer(
+                      g,
+                      unlocked,
+                      affordable,
+                      done,
+                      unlocked && affordable && !done,
+                      Math.max(0, g.requiredPoints() - rank.points()),
+                      Math.max(0, g.priceRp() - wallet.balanceRp()),
+                      done
+                          ? "ALREADY_CLAIMED"
+                          : !unlocked
+                              ? "LEADERBOARD_POINTS"
+                              : !affordable ? "INSUFFICIENT_RP" : null);
+                })
+            .toList();
+    return new Catalogue(
+        wallet,
+        rank,
+        List.of(
+            new Category("SPORTY_MERCH", "Sporty Merch", "RP"),
+            new Category("SPORTYBET_REWARDS", "SportyBet Rewards", "LEADERBOARD_POINTS")),
+        offers);
+  }
+
   @Transactional
   public Purchased purchase(UUID user, UUID giftId) {
     var gift =
@@ -104,6 +169,17 @@ public class RewardService {
             .findFirst()
             .orElseThrow(() -> ApiException.rule("GIFT_UNAVAILABLE", "Gift is unavailable"));
     int balance = lockWallet(user);
+    if (gift.requiredPoints() > profiles.ranking(user).points())
+      throw ApiException.rule(
+          "REWARD_LOCKED", "Earn more leaderboard points to unlock this reward");
+    if (gift.onePerUser()
+        && db.queryForObject(
+                "select count(*) from gift_purchase where user_id=? and gift_id=?",
+                Long.class,
+                user,
+                giftId)
+            > 0)
+      throw new ApiException(409, "REWARD_ALREADY_CLAIMED", "This reward has already been claimed");
     if (balance < gift.priceRp())
       throw ApiException.rule("INSUFFICIENT_RP", "Not enough reward points");
     UUID id = UUID.randomUUID();
@@ -120,13 +196,14 @@ public class RewardService {
         gift.priceRp(),
         purchase.voucherCode(),
         Timestamp.from(now));
-    db.update(
-        "insert into reward_ledger values (?,?,?,'PURCHASE',null,?,?)",
-        UUID.randomUUID(),
-        user,
-        -gift.priceRp(),
-        id,
-        Timestamp.from(now));
+    if (gift.priceRp() > 0)
+      db.update(
+          "insert into reward_ledger values (?,?,?,'PURCHASE',null,?,?)",
+          UUID.randomUUID(),
+          user,
+          -gift.priceRp(),
+          id,
+          Timestamp.from(now));
     return new Purchased(purchase, balance - gift.priceRp());
   }
 
@@ -171,6 +248,8 @@ public class RewardService {
         rs.getString("description"),
         rs.getString("category"),
         rs.getString("image_url"),
-        rs.getInt("price_rp"));
+        rs.getInt("price_rp"),
+        rs.getInt("required_points"),
+        rs.getBoolean("one_per_user"));
   }
 }

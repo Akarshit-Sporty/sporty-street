@@ -17,10 +17,12 @@ import org.testcontainers.junit.jupiter.*;
 import org.testcontainers.postgresql.PostgreSQLContainer;
 import tools.jackson.databind.*;
 
-@SpringBootTest
+@SpringBootTest(properties = "sporty.showcase.enabled=false")
 @ActiveProfiles({"local", "test"})
 @AutoConfigureMockMvc
 @Testcontainers
+@org.springframework.test.annotation.DirtiesContext(
+    classMode = org.springframework.test.annotation.DirtiesContext.ClassMode.AFTER_CLASS)
 class CommunityIT {
   @Container
   static final PostgreSQLContainer POSTGRES = new PostgreSQLContainer("postgres:16-alpine");

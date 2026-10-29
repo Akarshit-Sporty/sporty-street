@@ -9,7 +9,10 @@ event-sourcing framework, or speculative extension architecture.
 
 **Status:** `[ ]` not started · `[~]` in progress · `[x]` done. Phases 0–4 implemented and verified on 2026-10-27.
 
-**Delivery evidence:** `./mvnw verify` passes 112 checks (74 unit/security checks and 38 PostgreSQL
+**Latest scope:** §13 supersedes the earlier seed, profile/invitation and reward-catalogue
+restrictions. See `docs/profile-play-rewards-api.md` for current contracts.
+
+**Delivery evidence:** `./mvnw verify` passes 120 checks (74 unit/security checks and 46 PostgreSQL
 integration checks). A fresh isolated Compose stack completed the full three-minute demo:
 substitution, late goals, final score/rank, RP credit, gift purchase and identical retry.
 Restart retained the result, wallet, voucher and ledger; SSE reconnect returned the settled
@@ -566,3 +569,39 @@ reliability requirements demand them. No preparatory tables/policies in the MVP.
 - These reads do not write game teams/results/wallets. Community-only profile IDs are not login
   accounts; no extra users or wallets are created. Stats/memberships/friends are fixed fixtures.
 - The backend APIs and assets are delivered here; frontend wiring must be done in its own repository.
+
+
+## 13. Profile, Play, friends and reward tiers (2026-10-29, later request)
+
+This explicit user request supersedes earlier exclusions for profile statistics/badges and
+friend round invitations, and replaces the old 50/100/150 RP gift catalogue. League joins,
+Banter writes and manager backing transactions remain outside scope.
+
+- Ten login accounts; eight avatars (80%), two null. Preserve existing identities/photos.
+- Add 40 settled historical rounds, with saved teams, events, scoring contributions, final
+  results and real RP ledger credits. Seeded results are fictional and consistent with scoring.
+  Add them once without altering existing results/purchases/balances; restart never recredits.
+- Generate 11 upcoming rounds over seven dates, real clubs/players and eight saved rival teams
+  each; extend on startup/hourly. Three today, three tomorrow, five further dates. Promote the
+  original Champions Night only if still DRAFT. Never rewrite live/settled original games.
+- Round filters: TODAY/TOMORROW/THIS_WEEK (rolling seven dates), timeZone (UTC default),
+  QUICK/MATCHDAY/SPECIAL. Return format, matchCount, participantCount and simulated flag.
+- Profile/history/overall leaderboard APIs derive statistics and rewards eligibility from saved
+  final results. XP = 100 per completed round + fantasy points; 1,000 XP per level. Include
+  average score, best finish, wins, streak, Home Hero, substitution stats and earned badges.
+- Alice has three persisted friends: Bob, Carol, Dave. Authenticated in-app invitation APIs
+  create/list/accept/decline invitations to OPEN rounds. Recipient acceptance auto-picks a team
+  if needed; existing teams stay intact. No email/push delivery or fan-points accounting.
+- Sporty Merch: cap 3,000 RP, T-shirt 4,500, hoodie 6,000, with bundled red product images.
+  Assumption: ~100 RP/day yields 30–60 days; actual frequency/win rate changes time to reward.
+- SportyBet Rewards: Referral free/unlocked for all; Free Bet 500 cumulative leaderboard points;
+  Cashback 3,000; Lucky Wheel 5,000. Point thresholds, not ranks (only ten test accounts).
+  Once per user, 0 RP; leaderboard points are not deducted. All fulfilment remains local.
+- `/rewards/catalogue` returns wallet, ranking, category labels and per-offer eligibility,
+  affordability, claimed state, gaps and lock reason. Existing purchase endpoint handles both
+  categories with wallet locking/idempotency. Free claims have no RP ledger entry.
+- Alice's history yields 4,000 RP plus any existing balance, and opens Free Bet but not higher
+  tiers. Old gifts are retired, old purchase name/price snapshots remain unchanged.
+- Verify persisted seed idempotence, result/contribution/ledger equality, calendar filters,
+  actual participants, 80% avatars, invite isolation/acceptance, public assets, free/paid claim
+  eligibility, retry behavior and concurrent one-time claims. Do not generate another ZIP.

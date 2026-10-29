@@ -95,3 +95,11 @@ or fan-point debits. The existing real round-scoring and RP/gift purchase APIs a
 
 The frontend code is not in this repository. The screen changes take effect once the frontend
 switches its hardcoded datasets to these endpoints and renders the supplied image URLs.
+
+
+## Later profile and friends update
+
+See [Profile / Play / Rewards](profile-play-rewards-api.md) for the database-backed profile,
+10 login accounts (8 avatars), 40-game history, rolling schedule, real friends/invitations and
+new reward categories. The friends/managers/league statistics described above remain read-only
+preview fixtures; `/me/friends` and `/me/invitations` are the persisted invitation workflow.

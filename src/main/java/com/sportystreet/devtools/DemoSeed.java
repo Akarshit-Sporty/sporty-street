@@ -35,7 +35,9 @@ public class DemoSeed implements ApplicationRunner {
           country.code(),
           country.name());
     }
-    String[] names = {"alice", "bob", "carol", "dave", "eve", "frank", "grace", "henry"};
+    String[] names = {
+      "alice", "bob", "carol", "dave", "eve", "frank", "grace", "henry", "ivy", "jack"
+    };
     String[] homeCountries = {"BRA", "FRA", "ENG", "ESP", "ARG", "DEU"};
     for (int i = 0; i < names.length; i++) {
       db.update(
@@ -45,10 +47,11 @@ public class DemoSeed implements ApplicationRunner {
           names[i],
           Character.toUpperCase(names[i].charAt(0)) + names[i].substring(1),
           i < 6 ? id("country:" + homeCountries[i]) : null);
-      db.update(
-          "update app_user set avatar_url=? where id=? and avatar_url is null",
-          "/media/avatars/" + names[i] + ".jpg",
-          id("user:" + names[i]));
+      if (i < 8)
+        db.update(
+            "update app_user set avatar_url=? where id=? and avatar_url is null",
+            "/media/avatars/" + names[i] + ".jpg",
+            id("user:" + names[i]));
     }
   }
 }

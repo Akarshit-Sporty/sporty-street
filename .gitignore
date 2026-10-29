@@ -5,3 +5,6 @@
 .env
 /.demo/
 __pycache__/
+
+# Local handoff archives
+/*.zip

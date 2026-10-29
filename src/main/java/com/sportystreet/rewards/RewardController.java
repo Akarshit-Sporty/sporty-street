@@ -20,6 +20,11 @@ public class RewardController {
     this.idempotency = idempotency;
   }
 
+  @GetMapping("/rewards/catalogue")
+  public RewardService.Catalogue catalogue(@AuthenticationPrincipal UserService.UserResponse user) {
+    return rewards.catalogue(user.id());
+  }
+
   @GetMapping("/rewards/wallet")
   public RewardService.Wallet wallet(@AuthenticationPrincipal UserService.UserResponse user) {
     return rewards.wallet(user.id());

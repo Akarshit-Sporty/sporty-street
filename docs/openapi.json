@@ -477,12 +477,214 @@
         }
       }
     },
+    "/api/v1/invitations/{id}/decline": {
+      "post": {
+        "tags": [
+          "friend-controller"
+        ],
+        "operationId": "decline",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invitation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/invitations/{id}/accept": {
+      "post": {
+        "tags": [
+          "friend-controller"
+        ],
+        "operationId": "accept",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invitation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/internal/match-events": {
       "post": {
         "tags": [
           "ingestion-controller"
         ],
-        "operationId": "accept",
+        "operationId": "accept_1",
         "requestBody": {
           "content": {
             "application/json": {
@@ -624,6 +826,125 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Purchased"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/friends/{friendId}/invitations": {
+      "post": {
+        "tags": [
+          "friend-controller"
+        ],
+        "operationId": "invite",
+        "parameters": [
+          {
+            "name": "friendId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Invite"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invitation"
                 }
               }
             }
@@ -1592,6 +1913,31 @@
             "required": false,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timeZone",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "UTC"
             }
           },
           {
@@ -2683,6 +3029,96 @@
         }
       }
     },
+    "/api/v1/rewards/catalogue": {
+      "get": {
+        "tags": [
+          "reward-controller"
+        ],
+        "operationId": "catalogue",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Catalogue"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/me": {
       "get": {
         "tags": [
@@ -2696,6 +3132,118 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/me/round-history": {
+      "get": {
+        "tags": [
+          "profile-controller"
+        ],
+        "operationId": "history_1",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseHistory"
                 }
               }
             }
@@ -2808,6 +3356,320 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PageResponsePurchase"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/me/profile": {
+      "get": {
+        "tags": [
+          "profile-controller"
+        ],
+        "operationId": "profile",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Profile"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/me/invitations": {
+      "get": {
+        "tags": [
+          "friend-controller"
+        ],
+        "operationId": "invitations",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseInvitation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/me/friends": {
+      "get": {
+        "tags": [
+          "friend-controller"
+        ],
+        "operationId": "friends",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseFriend"
                 }
               }
             }
@@ -3450,6 +4312,118 @@
         }
       }
     },
+    "/api/v1/leaderboard": {
+      "get": {
+        "tags": [
+          "profile-controller"
+        ],
+        "operationId": "leaderboard_1",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseRanking"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/gifts": {
       "get": {
         "tags": [
@@ -3967,9 +4941,9 @@
       "Substitute": {
         "type": "object",
         "example": {
-          "incomingPlayerId": "00000000-0000-0000-0000-000000000006",
           "outgoingPlayerId": "00000000-0000-0000-0000-000000000001",
-          "expectedVersion": 0
+          "expectedVersion": 0,
+          "incomingPlayerId": "00000000-0000-0000-0000-000000000006"
         },
         "properties": {
           "outgoingPlayerId": {
@@ -3995,15 +4969,15 @@
       "Lineup": {
         "type": "object",
         "example": {
-          "benchPlayerId": "00000000-0000-0000-0000-000000000006",
-          "captainPlayerId": "00000000-0000-0000-0000-000000000001",
           "starterPlayerIds": [
             "00000000-0000-0000-0000-000000000001",
             "00000000-0000-0000-0000-000000000002",
             "00000000-0000-0000-0000-000000000003",
             "00000000-0000-0000-0000-000000000004",
             "00000000-0000-0000-0000-000000000005"
-          ]
+          ],
+          "benchPlayerId": "00000000-0000-0000-0000-000000000006",
+          "captainPlayerId": "00000000-0000-0000-0000-000000000001"
         },
         "properties": {
           "starterPlayerIds": {
@@ -4060,18 +5034,73 @@
           }
         }
       },
+      "Friend": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "username": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "avatarUrl": {
+            "type": "string"
+          },
+          "leaderboardPoints": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Invitation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sender": {
+            "$ref": "#/components/schemas/Friend"
+          },
+          "recipient": {
+            "$ref": "#/components/schemas/Friend"
+          },
+          "roundId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "roundName": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "respondedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
       "MatchEventMessage": {
         "type": "object",
         "example": {
-          "fixtureId": "00000000-0000-0000-0000-000000000001",
-          "occurredAt": "2026-10-27T12:02:30Z",
-          "voided": false,
           "eventType": "GOAL",
           "revision": 1,
           "matchMinute": 75,
           "playerId": "00000000-0000-0000-0000-000000000002",
           "providerEventId": "goal-1",
-          "provider": "simulator"
+          "provider": "simulator",
+          "fixtureId": "00000000-0000-0000-0000-000000000001",
+          "occurredAt": "2026-10-27T12:02:30Z",
+          "voided": false
         },
         "properties": {
           "provider": {
@@ -4184,6 +5213,18 @@
             "format": "int32"
           }
         }
+      },
+      "Invite": {
+        "type": "object",
+        "properties": {
+          "roundId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "roundId"
+        ]
       },
       "Status": {
         "type": "object",
@@ -4326,6 +5367,20 @@
             "items": {
               "$ref": "#/components/schemas/FixtureResponse"
             }
+          },
+          "format": {
+            "type": "string"
+          },
+          "matchCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "participantCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "simulated": {
+            "type": "boolean"
           }
         }
       },
@@ -4764,6 +5819,136 @@
           }
         }
       },
+      "Catalogue": {
+        "type": "object",
+        "properties": {
+          "wallet": {
+            "$ref": "#/components/schemas/Wallet"
+          },
+          "leaderboard": {
+            "$ref": "#/components/schemas/Ranking"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Offer"
+            }
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          }
+        }
+      },
+      "Gift": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "priceRp": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "requiredPoints": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "onePerUser": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Offer": {
+        "type": "object",
+        "properties": {
+          "gift": {
+            "$ref": "#/components/schemas/Gift"
+          },
+          "unlocked": {
+            "type": "boolean"
+          },
+          "affordable": {
+            "type": "boolean"
+          },
+          "claimed": {
+            "type": "boolean"
+          },
+          "canClaim": {
+            "type": "boolean"
+          },
+          "pointsNeeded": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "rpNeeded": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lockReason": {
+            "type": "string"
+          }
+        }
+      },
+      "Ranking": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "username": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "avatarUrl": {
+            "type": "string"
+          },
+          "points": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "rank": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "roundsPlayed": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
       "PageResponsePurchase": {
         "type": "object",
         "properties": {
@@ -4771,6 +5956,178 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Purchase"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Badge": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "unlocked": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Hero": {
+        "type": "object",
+        "properties": {
+          "playerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "bonusPoints": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Profile": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/UserResponse"
+          },
+          "bio": {
+            "type": "string"
+          },
+          "joinedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/Stats"
+          },
+          "progress": {
+            "$ref": "#/components/schemas/Progress"
+          },
+          "leaderboard": {
+            "$ref": "#/components/schemas/Ranking"
+          },
+          "badges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Badge"
+            }
+          },
+          "topHomeHero": {
+            "$ref": "#/components/schemas/Hero"
+          },
+          "roundHistory": {
+            "$ref": "#/components/schemas/PageResponseHistory"
+          }
+        }
+      },
+      "Progress": {
+        "type": "object",
+        "properties": {
+          "xp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "level": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "xpInLevel": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "xpForNextLevel": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      },
+      "Stats": {
+        "type": "object",
+        "properties": {
+          "roundsPlayed": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "averagePoints": {
+            "type": "number",
+            "format": "double"
+          },
+          "bestFinish": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "wins": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "substitutions": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "smartSubs": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "streakDays": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PageResponseInvitation": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Invitation"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "PageResponseFriend": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Friend"
             }
           },
           "page": {
@@ -5134,28 +6491,26 @@
           }
         }
       },
-      "Gift": {
+      "PageResponseRanking": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Ranking"
+            }
           },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "category": {
-            "type": "string"
-          },
-          "imageUrl": {
-            "type": "string"
-          },
-          "priceRp": {
+          "page": {
             "type": "integer",
             "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
