@@ -23,6 +23,23 @@ public record Rules(
 
   public record Rewards(int participationRp, int winnerBonusRp) {}
 
+  public static final int DEMO_DURATION_SECONDS = 180;
+
+  public static Rules demoDefaults() {
+    var r = defaults();
+    return new Rules(
+        r.version(),
+        r.starterCount(),
+        r.benchCount(),
+        r.distinctStarterCountries(),
+        r.base(),
+        r.captainMultiplier(),
+        r.homeHero(),
+        r.twist(),
+        r.subActivationDelaySeconds(),
+        new Rewards(0, 0));
+  }
+
   public static Rules defaults() {
     return new Rules(
         1,

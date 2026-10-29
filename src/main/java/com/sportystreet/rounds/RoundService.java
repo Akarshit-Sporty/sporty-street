@@ -24,7 +24,9 @@ public class RoundService {
       String format,
       int matchCount,
       long participantCount,
-      boolean simulated) {}
+      boolean simulated,
+      boolean demoMode,
+      Instant endsAt) {}
 
   private final RoundRepository rounds;
   private final CatalogueService catalogue;
@@ -57,6 +59,17 @@ public class RoundService {
 
   public PageResponse<RoundResponse> list(
       String status, String period, String format, String timeZone, int page, int size) {
+    return list(status, period, format, timeZone, null, page, size);
+  }
+
+  public PageResponse<RoundResponse> list(
+      String status,
+      String period,
+      String format,
+      String timeZone,
+      Boolean demoMode,
+      int page,
+      int size) {
     if (period != null && !Set.of("TODAY", "TOMORROW", "THIS_WEEK").contains(period))
       throw new ApiException(400, "VALIDATION_FAILED", "Invalid period");
     if (format != null && !Set.of("QUICK", "MATCHDAY", "SPECIAL").contains(format))
@@ -91,6 +104,7 @@ public class RoundService {
                     default -> !date.isBefore(today) && date.isBefore(today.plusDays(7));
                   };
                 })
+            .filter(r -> demoMode == null || demoMode == isDemo(r.id))
             .map(this::response)
             .filter(r -> format == null || format.equals(r.format()))
             .toList(),
@@ -100,6 +114,7 @@ public class RoundService {
 
   public List<UUID> due() {
     return rounds.findByStatusAndEntryDeadlineLessThanEqual("OPEN", clock.instant()).stream()
+        .filter(r -> !isDemo(r.id))
         .map(r -> r.id)
         .toList();
   }
@@ -115,12 +130,28 @@ public class RoundService {
     var r = rounds.lock(id).orElseThrow(ApiException::notFound);
     if (r.status.equals("LIVE")) return response(r);
     if (!r.status.equals("OPEN")) throw ApiException.rule("ROUND_NOT_OPEN", "Round is not open");
-    if (early && clock.instant().isBefore(r.entryDeadline)) r.entryDeadline = clock.instant();
+    boolean demo = isDemo(id);
+    if (early && (demo || clock.instant().isBefore(r.entryDeadline)))
+      r.entryDeadline = clock.instant();
     if (clock.instant().isBefore(r.entryDeadline))
       throw ApiException.rule("ROUND_NOT_LIVE", "Deadline has not arrived");
     r.status = "LIVE";
     r.subWindowOpensAt = r.entryDeadline;
-    r.subWindowClosesAt = r.entryDeadline.plus(Duration.ofHours(6));
+    r.subWindowClosesAt =
+        demo
+            ? r.entryDeadline.plusSeconds(
+                Rules.DEMO_DURATION_SECONDS - r.rules.subActivationDelaySeconds())
+            : r.entryDeadline.plus(Duration.ofHours(6));
+    if (demo) {
+      db.update(
+          "update demo_round set ends_at=? where round_id=?",
+          java.sql.Timestamp.from(r.entryDeadline.plusSeconds(Rules.DEMO_DURATION_SECONDS)),
+          id);
+      db.update(
+          "update fixture set kickoff_at=? where round_id=?",
+          java.sql.Timestamp.from(r.entryDeadline),
+          id);
+    }
     r.stateVersion++;
     return response(r);
   }
@@ -148,7 +179,25 @@ public class RoundService {
     r.stateVersion++;
   }
 
+  public boolean isDemo(UUID id) {
+    return Boolean.TRUE.equals(
+        db.queryForObject(
+            "select exists(select 1 from demo_round where round_id=?)", Boolean.class, id));
+  }
+
+  public void requireManual(UUID id) {
+    if (isDemo(id))
+      throw new ApiException(
+          409, "DEMO_MANAGED", "Continuous demo rounds are controlled by the server");
+  }
+
   private RoundResponse response(RoundEntity r) {
+    var ends =
+        db.query(
+            "select ends_at from demo_round where round_id=?",
+            (rs, n) -> rs.getTimestamp(1).toInstant(),
+            r.id);
+    var fixtures = catalogue.fixtures(r.id);
     return new RoundResponse(
         r.id,
         r.name,
@@ -159,15 +208,17 @@ public class RoundService {
         r.rules,
         r.stateVersion,
         clock.instant(),
-        catalogue.fixtures(r.id),
+        fixtures,
         db
             .queryForList(
                 "select format from round_presentation where round_id=?", String.class, r.id)
             .stream()
             .findFirst()
             .orElse("MATCHDAY"),
-        catalogue.fixtures(r.id).size(),
+        fixtures.size(),
         db.queryForObject("select count(*) from team where round_id=?", Long.class, r.id),
-        true);
+        true,
+        !ends.isEmpty(),
+        ends.isEmpty() ? null : ends.getFirst());
   }
 }

@@ -1916,6 +1916,14 @@
             }
           },
           {
+            "name": "demoMode",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
             "name": "period",
             "in": "query",
             "required": false,
@@ -4634,6 +4642,96 @@
         }
       }
     },
+    "/api/v1/demo/session": {
+      "get": {
+        "tags": [
+          "demo-controller"
+        ],
+        "operationId": "session",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Session"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Domain or request error; code is stable, traceId identifies the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/backing/managers": {
       "get": {
         "tags": [
@@ -4941,9 +5039,9 @@
       "Substitute": {
         "type": "object",
         "example": {
-          "outgoingPlayerId": "00000000-0000-0000-0000-000000000001",
+          "incomingPlayerId": "00000000-0000-0000-0000-000000000006",
           "expectedVersion": 0,
-          "incomingPlayerId": "00000000-0000-0000-0000-000000000006"
+          "outgoingPlayerId": "00000000-0000-0000-0000-000000000001"
         },
         "properties": {
           "outgoingPlayerId": {
@@ -4969,15 +5067,15 @@
       "Lineup": {
         "type": "object",
         "example": {
+          "captainPlayerId": "00000000-0000-0000-0000-000000000001",
+          "benchPlayerId": "00000000-0000-0000-0000-000000000006",
           "starterPlayerIds": [
             "00000000-0000-0000-0000-000000000001",
             "00000000-0000-0000-0000-000000000002",
             "00000000-0000-0000-0000-000000000003",
             "00000000-0000-0000-0000-000000000004",
             "00000000-0000-0000-0000-000000000005"
-          ],
-          "benchPlayerId": "00000000-0000-0000-0000-000000000006",
-          "captainPlayerId": "00000000-0000-0000-0000-000000000001"
+          ]
         },
         "properties": {
           "starterPlayerIds": {
@@ -5092,15 +5190,15 @@
       "MatchEventMessage": {
         "type": "object",
         "example": {
-          "eventType": "GOAL",
           "revision": 1,
-          "matchMinute": 75,
-          "playerId": "00000000-0000-0000-0000-000000000002",
-          "providerEventId": "goal-1",
-          "provider": "simulator",
-          "fixtureId": "00000000-0000-0000-0000-000000000001",
+          "eventType": "GOAL",
+          "voided": false,
           "occurredAt": "2026-10-27T12:02:30Z",
-          "voided": false
+          "fixtureId": "00000000-0000-0000-0000-000000000001",
+          "provider": "simulator",
+          "providerEventId": "goal-1",
+          "playerId": "00000000-0000-0000-0000-000000000002",
+          "matchMinute": 75
         },
         "properties": {
           "provider": {
@@ -5381,6 +5479,13 @@
           },
           "simulated": {
             "type": "boolean"
+          },
+          "demoMode": {
+            "type": "boolean"
+          },
+          "endsAt": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -5691,6 +5796,9 @@
           },
           "breakdown": {
             "$ref": "#/components/schemas/Breakdown"
+          },
+          "demoMode": {
+            "type": "boolean"
           }
         }
       },
@@ -6537,6 +6645,32 @@
           }
         }
       },
+      "Session": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "serverTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "roundDurationSeconds": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "retentionHours": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentRound": {
+            "$ref": "#/components/schemas/RoundResponse"
+          },
+          "nextRound": {
+            "$ref": "#/components/schemas/RoundResponse"
+          }
+        }
+      },
       "ManagerCard": {
         "type": "object",
         "properties": {
@@ -6627,10 +6761,10 @@
       },
       "ApiErrorResponse": {
         "example": {
-          "traceId": "00000000-0000-0000-0000-000000000001",
-          "message": "Not enough reward points",
+          "code": "INSUFFICIENT_RP",
           "fieldErrors": [],
-          "code": "INSUFFICIENT_RP"
+          "message": "Not enough reward points",
+          "traceId": "00000000-0000-0000-0000-000000000001"
         },
         "properties": {
           "code": {

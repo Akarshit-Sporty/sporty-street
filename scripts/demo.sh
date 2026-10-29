@@ -23,7 +23,7 @@ api_post() {
 if [ "$RESET_DEMO" = true ]; then api_post dev/reset '{}' >/dev/null; fi
 api_get me | jq '{username,countryId}'
 api_get rules | jq '{captainMultiplier,homeHero,twist,rewards}'
-round=$(api_get "rounds?status=OPEN" | jq -r '.items[] | select(.status=="OPEN" or .status=="LIVE") | .id' | head -1)
+round=$(api_get "rounds?status=OPEN&demoMode=false" | jq -r '.items[] | select(.status=="OPEN" or .status=="LIVE") | .id' | head -1)
 [ -n "$round" ] || { echo 'No open/live demo round; run with --reset for a new round.'; exit 1; }
 if ! team=$(api_get "rounds/$round/my-team" 2>/dev/null); then
   pick=$(api_post "rounds/$round/auto-pick" '{"preferHomeHero":true}')

@@ -163,3 +163,14 @@ endpoints and use the Play filters to show the new information.
 schedule without a reset. `sporty.showcase.enabled=false` disables only the rich history/schedule
 seed for focused integration tests; the default Compose keeps it enabled. Explicit `/dev/reset`
 recreates the rich dataset. No ZIP archive is produced for this update.
+
+## Continuous practice rounds
+
+See the [README integration guide](../README.md#continuous-live-demo-frontend-integration).
+`GET /api/v1/demo/session` returns current LIVE and next OPEN rounds. Their `demoMode=true`
+separates them from ordinary seeded calendar rounds (`simulated=true` alone does not).
+Optional `GET /rounds?demoMode=false` keeps the calendar limited to ordinary games.
+Practice fantasy scores and results work, but award zero RP and do not affect this guide's
+profile statistics, XP, history, badges, permanent leaderboard or reward eligibility.
+Switch per-round SSE subscriptions when the session's current ID changes; refresh the session
+every five seconds. Practice results/invitations expire 24 hours after settlement.

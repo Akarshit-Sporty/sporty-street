@@ -46,7 +46,7 @@ public class FriendService {
     return db
         .query(
             """
-select u.*,coalesce((select sum(r.final_score) from round_result r join team t on t.id=r.team_id where t.user_id=u.id),0) points
+select u.*,coalesce((select sum(r.final_score) from round_result r join team t on t.id=r.team_id where t.user_id=u.id and not exists(select 1 from demo_round d where d.round_id=r.round_id)),0) points
 from app_user u where u.id=?
 """,
             (rs, n) ->

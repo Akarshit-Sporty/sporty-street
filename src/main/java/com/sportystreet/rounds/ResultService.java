@@ -22,7 +22,8 @@ public class ResultService {
       int winnerRp,
       int totalAwardedRp,
       Instant settledAt,
-      ScoreService.Breakdown breakdown) {}
+      ScoreService.Breakdown breakdown,
+      boolean demoMode) {}
 
   private final JdbcTemplate db;
   private final TeamService teams;
@@ -81,7 +82,8 @@ public class ResultService {
                     rs.getInt("winner_rp"),
                     rs.getInt("participation_rp") + rs.getInt("winner_rp"),
                     rs.getTimestamp("settled_at").toInstant(),
-                    scores.breakdown(teamId)),
+                    scores.breakdown(teamId),
+                    rounds.isDemo(rs.getObject("round_id", UUID.class))),
             teamId)
         .stream()
         .findFirst()

@@ -21,12 +21,13 @@ public class RoundController {
   @GetMapping
   public PageResponse<RoundService.RoundResponse> list(
       @RequestParam(required = false) String status,
+      @RequestParam(required = false) Boolean demoMode,
       @RequestParam(required = false) String period,
       @RequestParam(required = false) String format,
       @RequestParam(defaultValue = "UTC") String timeZone,
       @RequestParam(defaultValue = "0") int page,
       @RequestParam(defaultValue = "20") int size) {
-    return rounds.list(status, period, format, timeZone, page, size);
+    return rounds.list(status, period, format, timeZone, demoMode, page, size);
   }
 
   @GetMapping("/{id}")

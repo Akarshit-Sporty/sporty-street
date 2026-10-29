@@ -159,6 +159,34 @@ public class ShowcaseSeed implements ApplicationRunner {
 
   private void createRound(
       UUID id, String name, String status, Instant start, int matches, String format) {
+    createRound(id, name, status, start, matches, format, 0, false);
+  }
+
+  @Transactional(propagation = org.springframework.transaction.annotation.Propagation.MANDATORY)
+  public UUID createPracticeRound(Instant deadline) {
+    UUID id = UUID.randomUUID();
+    int pair = (int) (Math.floorDiv(deadline.getEpochSecond(), Rules.DEMO_DURATION_SECONDS) % 3);
+    String[] names = {"El Clásico Live", "Premier League Live", "Champions Live"};
+    createRound(id, names[pair], "OPEN", deadline, 1, "QUICK", pair * 2, true);
+    db.update(
+        "insert into demo_round(round_id,ends_at) values(?,?)",
+        id,
+        Timestamp.from(deadline.plusSeconds(Rules.DEMO_DURATION_SECONDS)));
+    db.update("update fixture set provider='demo-loop' where round_id=?", id);
+    addTeams(id, deadline, false);
+    return id;
+  }
+
+  private void createRound(
+      UUID id,
+      String name,
+      String status,
+      Instant start,
+      int matches,
+      String format,
+      int firstClub,
+      boolean practice) {
+    var rules = practice ? Rules.demoDefaults() : Rules.defaults();
     db.update(
         "insert into app_round values(?,?,?,?,?,?,?::jsonb,0,null)",
         id,
@@ -166,8 +194,12 @@ public class ShowcaseSeed implements ApplicationRunner {
         status,
         Timestamp.from(start),
         Timestamp.from(start),
-        Timestamp.from(start.plusSeconds(21600)),
-        json.writeValueAsString(Rules.defaults()));
+        Timestamp.from(
+            start.plusSeconds(
+                practice
+                    ? Rules.DEMO_DURATION_SECONDS - rules.subActivationDelaySeconds()
+                    : 21600)),
+        json.writeValueAsString(rules));
     db.update("insert into round_presentation values(?,?,true)", id, format);
     for (int f = 0; f < matches; f++) {
       UUID fixture = DemoSeed.id("fixture:" + id + ":" + f);
@@ -176,10 +208,10 @@ public class ShowcaseSeed implements ApplicationRunner {
           fixture,
           id,
           "showcase-" + id + "-" + f,
-          DemoSeed.id("club:" + f * 2),
-          DemoSeed.id("club:" + (f * 2 + 1)),
+          DemoSeed.id("club:" + (firstClub + f * 2)),
+          DemoSeed.id("club:" + (firstClub + f * 2 + 1)),
           Timestamp.from(start.plusSeconds(f * 900L)));
-      for (int c = f * 2; c < f * 2 + 2; c++)
+      for (int c = firstClub + f * 2; c < firstClub + f * 2 + 2; c++)
         for (int p = 0; p < 10; p++)
           db.update(
               "insert into round_player values(?,?,?,true)",
@@ -205,7 +237,9 @@ public class ShowcaseSeed implements ApplicationRunner {
     for (int i = 0; i < users.size(); i++) {
       var u = users.get(i);
       String name = (String) u.get("username");
-      if (!history && (name.equals("alice") || name.equals("dave"))) continue;
+      if (!history
+          && !Set.of("bob", "carol", "eve", "frank", "grace", "henry", "ivy", "jack")
+              .contains(name)) continue;
       UUID team = DemoSeed.id("team:" + round + ":" + name);
       db.update(
           "insert into team values(?,?,?,?,?,0,0)",

@@ -40,12 +40,13 @@ public class SettlementService {
       throw ApiException.rule("ROUND_NOT_LIVE", "Only live rounds can settle");
     if (teams.hasPendingSubstitution(id))
       throw new ApiException(409, "ROUND_BUSY", "Wait for pending substitutions to activate");
-    rewards.award(id, round.rules().rewards(), teams.participants(id), standings);
+    if (!round.demoMode())
+      rewards.award(id, round.rules().rewards(), teams.participants(id), standings);
     results.save(
         id,
         standings,
-        round.rules().rewards().participationRp(),
-        round.rules().rewards().winnerBonusRp());
+        round.demoMode() ? 0 : round.rules().rewards().participationRp(),
+        round.demoMode() ? 0 : round.rules().rewards().winnerBonusRp());
     rounds.markSettled(id);
     return new Summary(id, "SETTLED", standings.size(), rounds.get(id).stateVersion());
   }

@@ -22,7 +22,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.postgresql.PostgreSQLContainer;
 
-@SpringBootTest(properties = "sporty.showcase.enabled=false")
+@SpringBootTest(properties = {"sporty.showcase.enabled=false", "sporty.demo.enabled=false"})
 @ActiveProfiles("local")
 @AutoConfigureMockMvc
 @Testcontainers
@@ -75,6 +75,21 @@ class FoundationIT {
         .andExpect(status().isUnauthorized());
     mvc.perform(get("/api/v1/me").header("X-Provider-Token", "local-demo-provider-token"))
         .andExpect(status().isUnauthorized());
+  }
+
+  @Test
+  void continuousDemoCanBeDisabledWithoutChangingOrdinaryRounds() throws Exception {
+    mvc.perform(get("/api/v1/demo/session").header("X-Dev-User", "alice"))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.enabled").value(false))
+        .andExpect(jsonPath("$.currentRound").isEmpty())
+        .andExpect(jsonPath("$.nextRound").isEmpty());
+    assertThat(db.queryForObject("select count(*) from demo_round", Long.class)).isZero();
+    mvc.perform(get("/api/v1/rounds?demoMode=false").header("X-Dev-User", "alice"))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.total").value(1))
+        .andExpect(jsonPath("$.items[0].demoMode").value(false))
+        .andExpect(jsonPath("$.items[0].endsAt").isEmpty());
   }
 
   @Test

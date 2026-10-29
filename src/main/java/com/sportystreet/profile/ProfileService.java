@@ -68,7 +68,7 @@ public class ProfileService {
         """
 select u.id,u.username,u.display_name,u.avatar_url,coalesce(sum(r.final_score),0) points,
  count(r.team_id) rounds,rank() over(order by coalesce(sum(r.final_score),0) desc) place
-from app_user u left join team t on t.user_id=u.id left join round_result r on r.team_id=t.id
+from app_user u left join team t on t.user_id=u.id left join round_result r on r.team_id=t.id and not exists(select 1 from demo_round d where d.round_id=r.round_id)
 group by u.id order by points desc,u.id
 """,
         (rs, n) ->
@@ -96,7 +96,7 @@ group by u.id order by points desc,u.id
 select r.id,r.name,r.status,r.entry_deadline,coalesce(rr.final_score,s.total,0) score,rr.final_rank,
 coalesce(rr.participation_rp+rr.winner_rp,0) rp from team t join app_round r on r.id=t.round_id
 left join team_score s on s.team_id=t.id left join round_result rr on rr.team_id=t.id
-where t.user_id=? order by r.entry_deadline desc,r.id
+where t.user_id=? and not exists(select 1 from demo_round d where d.round_id=t.round_id) order by r.entry_deadline desc,r.id
 """,
             (rs, n) ->
                 new History(
@@ -118,13 +118,14 @@ where t.user_id=? order by r.entry_deadline desc,r.id
         db.queryForMap(
             """
 select min(r.final_rank) best, count(*) filter(where r.final_rank=1) wins,coalesce(sum(t.subs_used),0) subs,
-min(r.settled_at) joined from team t join round_result r on r.team_id=t.id where t.user_id=?
+min(r.settled_at) joined from team t join round_result r on r.team_id=t.id where t.user_id=? and not exists(select 1 from demo_round d where d.round_id=t.round_id)
 """,
             user.id());
     var dates =
         db.query(
             "select distinct (r.settled_at at time zone 'UTC')::date from round_result r join team"
-                + " t on t.id=r.team_id where t.user_id=? order by 1 desc",
+                + " t on t.id=r.team_id where t.user_id=? and not exists(select 1 from demo_round d"
+                + " where d.round_id=t.round_id) order by 1 desc",
             (rs, n) -> rs.getDate(1).toLocalDate(),
             user.id());
     int streak = 0;
@@ -139,7 +140,7 @@ min(r.settled_at) joined from team t join round_result r on r.team_id=t.id where
         db.query(
             """
 select p.id,p.name,p.image_url,sum(c.points) points from score_contribution c join team t on t.id=c.team_id
-join player p on p.id=c.player_id where t.user_id=? and c.component='HOME_HERO_BONUS'
+join player p on p.id=c.player_id where t.user_id=? and not exists(select 1 from demo_round d where d.round_id=t.round_id) and c.component='HOME_HERO_BONUS'
 group by p.id order by points desc,p.id limit 1
 """,
             (rs, n) ->
@@ -149,7 +150,7 @@ group by p.id order by points desc,p.id limit 1
     long smart =
         db.queryForObject(
             """
-select count(*) from team_substitution s join team t on t.id=s.team_id where t.user_id=? and
+select count(*) from team_substitution s join team t on t.id=s.team_id where t.user_id=? and not exists(select 1 from demo_round d where d.round_id=t.round_id) and
 (select coalesce(sum(c.points),0) from score_contribution c join match_event e on e.id=c.match_event_id
  where c.team_id=t.id and c.player_id=s.incoming_player_id and e.occurred_at>=s.effective_at)>0
 """,
@@ -167,7 +168,8 @@ select count(*) from team_substitution s join team t on t.id=s.team_id where t.u
                 "Team Player",
                 db.queryForObject(
                         "select count(*) from round_invitation where sender_id=? and"
-                            + " status='ACCEPTED'",
+                            + " status='ACCEPTED' and not exists(select 1 from demo_round d where"
+                            + " d.round_id=round_invitation.round_id)",
                         Long.class,
                         user.id())
                     > 0),

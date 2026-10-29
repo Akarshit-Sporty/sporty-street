@@ -28,7 +28,7 @@ public class ResetService {
     db.queryForList("select pg_advisory_xact_lock(714034012)");
     db.execute(
         "truncate"
-            + " seed_marker,round_presentation,friendship,round_invitation,reward_ledger,gift_purchase,gift,reward_wallet,round_result,team_substitution,score_contribution,match_event,team_score,team_selection,team,round_player,fixture,player,club,app_round,idempotency_record,app_user,country");
+            + " demo_round,seed_marker,round_presentation,friendship,round_invitation,reward_ledger,gift_purchase,gift,reward_wallet,round_result,team_substitution,score_contribution,match_event,team_score,team_selection,team,round_player,fixture,player,club,app_round,idempotency_record,app_user,country");
     users.run(null);
     game.run(null);
     rewards.run(null);

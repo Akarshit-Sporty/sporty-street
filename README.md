@@ -21,6 +21,7 @@ docker compose up --build
 
 Optional settings: copy `.env.example` to `.env`. Default Compose enables the `local` demo
 profile: mock users, scripted fixtures and local controls. It is not production authentication.
+Continuous live practice is enabled by default; see [frontend integration below](#continuous-live-demo-frontend-integration).
 PostgreSQL stays private to the Compose network. Its named volume preserves data on restart.
 
 ## Football catalogue and player photos
@@ -50,7 +51,288 @@ clearing it. Historical rewards are applied once and never restored after spendi
 identities, team countries, earned scores and purchased gift snapshots are preserved.
 `--reset` remains an explicit destructive option for recreating the full local dataset.
 
-## Full demo (about three minutes)
+## Continuous live demo: frontend integration
+
+Compose enables `SPORTY_DEMO_ENABLED=true`. After startup the backend maintains one current
+`LIVE` practice round and one next `OPEN` round, without frontend/admin calls to start, simulate
+or settle them. Each game lasts **180 real seconds** (90 match minutes, 2 seconds per minute).
+There is no fixed list of IDs to cycle through: each new round gets its own UUID, fixture,
+player pool and eight saved rival teams. The three matchups rotate between Real Madrid–Barcelona,
+Manchester City–Liverpool and Bayern–PSG. They use the existing historical player catalogue.
+
+### Rewards and permanent statistics stay protected
+
+| Field / behavior | Continuous practice round | Ordinary round |
+| --- | --- | --- |
+| `round.demoMode` | `true` | `false` |
+| `round.simulated` | `true` | Also `true` in this backend; **not a rewards flag** |
+| `round.endsAt` | Server-managed end time | `null`; no new automatic end time |
+| Live fantasy score, rank, captain, Home Hero, late goals | Work normally | Work normally |
+| Final result and per-round standings | Saved temporarily | Saved permanently |
+| Participation/winner RP | **0 / 0** | 50 / 100 |
+| Overall `/leaderboard`, reward unlock points, profile XP/stats/history/badges | **Unaffected** | Updated as before |
+| Automatic rotation / simulation / settlement | Enabled by demo worker | Existing manual flow |
+| Retention | 24 hours after settlement | Unchanged |
+
+Use **`demoMode`**, not the name, `simulated`, or a hardcoded UUID, to identify practice games.
+Show a label such as “Practice · no RP or rating rewards”. Use **`round.rules`** for the game;
+`GET /api/v1/rules` still describes ordinary rounds and advertises their 50/100 RP rewards.
+Demo settlement also enforces zero awards independently of the rules JSON. It writes no RP
+ledger entries, and all permanent ranking/profile calculations exclude these rounds. Letting
+the deployment run for weeks therefore cannot farm RP, XP or reward-unlock points through this
+loop. Existing balances, purchases, ordinary results and free Referral eligibility stay intact.
+Users can still spend previously earned RP or claim rewards they already qualify for.
+
+Alice and Dave are **not automatically enrolled**. Neither are newly added accounts. Bob,
+Carol, Eve, Frank, Grace, Henry, Ivy and Jack provide the eight seeded opponents. A visitor can
+watch the current game immediately and choose a team for the next one. Participation is per
+round: we do not copy Alice's team into subsequent rounds or enroll her while she is offline.
+
+### 1. Discover the current and next game
+
+After authentication, call:
+
+```sh
+curl -H 'X-Dev-User: alice' http://localhost:8080/api/v1/demo/session
+```
+
+The response contains these fields (each round is the full existing `RoundResponse`, including
+`rules`, `fixtures`, `matchCount`, `participantCount`, `stateVersion` and `serverTime`):
+
+```text
+{
+  enabled: true,
+  serverTime: "2026-10-29T15:00:30Z",
+  roundDurationSeconds: 180,
+  retentionHours: 24,
+  currentRound: {
+    id: "<current UUID>", status: "LIVE", demoMode: true,
+    entryDeadline: "2026-10-29T15:00:00Z",
+    subWindowOpensAt: "2026-10-29T15:00:00Z",
+    subWindowClosesAt: "2026-10-29T15:02:00Z",
+    endsAt: "2026-10-29T15:03:00Z", ...
+  },
+  nextRound: {
+    id: "<next UUID>", status: "OPEN", demoMode: true,
+    entryDeadline: "2026-10-29T15:03:00Z",
+    endsAt: "2026-10-29T15:06:00Z", ...
+  }
+}
+```
+
+`currentRound` and `nextRound` can be `null` before initialization or after an error/reset;
+show a loading state and retry. If `enabled=false`, the worker is paused; do not present old
+LIVE rows as actively simulated games. Poll this endpoint **every 5 seconds** and on returning
+to the foreground. Use it for the Home live card and next-entry CTA, rather than taking the
+first element of the general round list. That list also contains ordinary historical/calendar
+rounds, and an ordinary LIVE round may coexist with the practice game.
+
+Optional list filters:
+
+```sh
+# All retained practice games, paginated (includes settled games):
+curl -H 'X-Dev-User: alice' 'http://localhost:8080/api/v1/rounds?demoMode=true&size=20'
+# Only ordinary rounds, for the existing Play calendar:
+curl -H 'X-Dev-User: alice' 'http://localhost:8080/api/v1/rounds?demoMode=false&period=TOMORROW&timeZone=Europe%2FMinsk'
+# Only the next practice game:
+curl -H 'X-Dev-User: alice' 'http://localhost:8080/api/v1/rounds?demoMode=true&status=OPEN'
+```
+
+Omitting `demoMode` returns both kinds. Existing TODAY/TOMORROW/THIS_WEEK and format filters
+still work. The loop creates only the current and next game; it does not create an entire week
+of practice slots ahead of time. Keep the existing ordinary schedule for Tomorrow/This Week.
+
+### 2. Watch now; enter the next OPEN round
+
+| Action | API |
+| --- | --- |
+| Current fixture/clubs/timing | `currentRound.fixtures` from the session |
+| Players available for the next round | `GET /api/v1/rounds/{nextId}/players` |
+| Suggest a lineup (does not save it) | `POST /api/v1/rounds/{nextId}/auto-pick` with `{"preferHomeHero":true}` |
+| Save entry | `POST /api/v1/rounds/{nextId}/teams` with `Idempotency-Key` |
+| Restore a previously saved entry | `GET /api/v1/rounds/{nextId}/my-team` |
+| Live state | `GET /api/v1/rounds/{currentId}/stream` (SSE) |
+| One live substitution | `POST /api/v1/teams/{teamId}/substitutions` with `Idempotency-Key` |
+| Final personal result | `GET /api/v1/rounds/{oldId}/result` |
+| Final/per-round leaderboard | `GET /api/v1/rounds/{oldId}/leaderboard` |
+
+Team creation uses the same body as ordinary games:
+
+```js
+const pick = await api(`/api/v1/rounds/${nextId}/auto-pick`, {
+  method: "POST",
+  body: JSON.stringify({ preferHomeHero: true })
+});
+const request = {
+  starterPlayerIds: pick.starters.map(player => player.id),
+  benchPlayerId: pick.bench.id,
+  captainPlayerId: pick.captainPlayerId
+};
+const key = crypto.randomUUID(); // keep this key AND request for retries of this attempt
+const team = await api(`/api/v1/rounds/${nextId}/teams`, {
+  method: "POST",
+  headers: { "Idempotency-Key": key },
+  body: JSON.stringify(request)
+});
+```
+
+The `api` helper below sets JSON headers/cookies. Joining is allowed only before
+`nextRound.entryDeadline`. If the game starts while the form is open, `ROUND_LOCKED` means
+refresh the session and let the user enter the new next round. Never silently submit an old
+lineup into a different round: the player pool may have changed. Treat a missing `/my-team`
+(404) as “not entered”, not as a server failure. Player objects in the saved team already
+include `imageUrl`; continue resolving `/media/...` against the backend origin.
+
+The substitution body is `{outgoingPlayerId, incomingPlayerId, expectedVersion}`. In a practice
+game the substitution window lasts the **first 120 seconds**. The existing **60-second real-time
+delay** is preserved, so a swap accepted before the cutoff can activate before the game ends.
+Use `subWindowClosesAt`, `myTeam.version`, `pendingSubstitution.effectiveAt` and the server's
+clock; do not infer availability from match minute alone. At/after the cutoff the server returns
+`SUBSTITUTION_WINDOW_CLOSED`. A pending swap must activate before the old round is settled.
+The next game can still start if an exceptional pending swap delays the previous result.
+
+### 3. Follow rotation with SSE
+
+`/stream` is **per round**, not a global lobby stream. It sends a named `ROUND_SNAPSHOT`
+immediately, then every two seconds, with a complete snapshot:
+
+```text
+{
+  eventType: "ROUND_SNAPSHOT", roundId: "<UUID>", stateVersion: 22,
+  asOf: "<UTC timestamp>",
+  payload: { round: {...}, myTeam: {...} | null, leaderboard: [...], result: {...} | null }
+}
+```
+
+A spectator receives `myTeam:null`; their `result` stays null even when the game settles.
+`payload.leaderboard` is the game's top 100, whereas `/api/v1/leaderboard` is the permanent
+rating and excludes practice games. Replace snapshot state instead of adding score deltas.
+Accept a newer `asOf` at equal `stateVersion`: time-dependent substitution state can change
+without a DB write. Reconnect supplies the latest snapshot, with no replay/Last-Event-ID log.
+
+On a changed `session.currentRound.id`, **close the old EventSource and open the new one**.
+Reset any version comparison when changing IDs. Polling must continue even when SSE is quiet
+or disconnected. To show the previous game's recap, fetch its `/result` separately: switching
+streams may happen before the final SSE frame arrives. Only request a personal recap if the
+user entered that game. On `ROUND_NOT_SETTLED`, retry later; on 404 after retention, discard the
+stale link and refresh the session. A reconnect to an old ID never redirects to the current ID.
+
+Minimal same-origin browser integration (replace the rendering callbacks with your UI):
+
+```js
+async function api(path, options = {}) {
+  const response = await fetch(path, {
+    ...options,
+    credentials: "include",
+    headers: { "Content-Type": "application/json", ...options.headers }
+  });
+  const body = await response.json();
+  if (!response.ok) throw Object.assign(new Error(body.message), body, { status: response.status });
+  return body;
+}
+
+// Once at sign-in; native EventSource cannot send X-Dev-User.
+await api("/api/v1/dev/login?username=alice", { method: "POST" });
+
+function followDemo({ renderSession, renderSnapshot, onPreviousRound, onError }) {
+  let source = null, activeId = null, last = null, busy = false, stopped = false;
+
+  async function refresh() {
+    if (busy || stopped) return;
+    busy = true;
+    try {
+      const session = await api("/api/v1/demo/session");
+      if (stopped) return;
+      renderSession(session); // update the next-round CTA and countdown too
+      const nextId = session.enabled ? session.currentRound?.id ?? null : null;
+      if (nextId === activeId) return;
+      const previous = activeId;
+      const wasEntered = last?.payload.myTeam != null;
+      source?.close();
+      source = null;
+      activeId = nextId;
+      last = null;
+      if (previous && wasEntered) {
+        // Callback fetches /rounds/{previous}/result, with retry if not settled yet.
+        Promise.resolve().then(() => onPreviousRound(previous)).catch(onError);
+      }
+      if (!nextId) return;
+      source = new EventSource(`/api/v1/rounds/${nextId}/stream`);
+      source.addEventListener("ROUND_SNAPSHOT", event => {
+        if (stopped || activeId !== nextId) return; // discard queued frames from the old game
+        const snapshot = JSON.parse(event.data);
+        if (snapshot.roundId !== nextId) return;
+        if (last && (snapshot.stateVersion < last.stateVersion ||
+            (snapshot.stateVersion === last.stateVersion && Date.parse(snapshot.asOf) <= Date.parse(last.asOf)))) return;
+        last = snapshot;
+        renderSnapshot(snapshot.payload);
+      });
+      source.onerror = () => {
+        // EventSource reconnects itself. The session poll finds a replacement/expired round.
+        if (!stopped && activeId === nextId) onError(new Error("Live connection interrupted"));
+      };
+    } catch (error) {
+      if (!stopped) onError(error); // on 401 route to sign-in; keep transient failures retryable
+    } finally {
+      busy = false;
+    }
+  }
+
+  const visible = () => { if (!document.hidden) void refresh(); };
+  document.addEventListener("visibilitychange", visible);
+  const timer = setInterval(() => void refresh(), 5000);
+  void refresh();
+  return () => { // call when unmounting this screen / logging out
+    stopped = true;
+    clearInterval(timer);
+    source?.close();
+    document.removeEventListener("visibilitychange", visible);
+  };
+}
+```
+
+Proxy `/api` to the backend on the frontend origin, preserve the `dev_user` HttpOnly cookie,
+and disable buffering/caching for SSE. Proxy `/media` too, or prefix image URLs with the backend
+origin. This example does not configure cross-origin CORS/cookies. Use `addEventListener` for
+`ROUND_SNAPSHOT`; bare `onmessage` will not receive this named event. Connections have a
+30-minute timeout and heartbeat comments every 20 seconds; browser reconnect is expected.
+
+Display the current match minute as `min(90, max(0, floor((estimatedServerNow - entryDeadline)
+/ 2000)))` when timestamps are in milliseconds. Estimate server clock offset from `serverTime`
+or snapshot `asOf` rather than trusting the device clock. Countdown reaching zero is a display
+hint: wait for server state and session rotation instead of calling a dev settlement endpoint.
+
+### Restart, retention and operations
+
+- Event IDs and the simulation cursor are stored in PostgreSQL. A tick commits events, scores,
+  cursor and rotation in one transaction; failed ticks roll back and retry. A shared DB lock
+  serializes ticks with local reset/seeding. A process restart resumes committed progress.
+- After downtime, the previous game's outstanding events are processed and it settles. The
+  queued OPEN round starts at the actual recovery time, followed by a fresh next round. The
+  backend **does not synthesize every missed three-minute slot** or grant catch-up rewards.
+  Entry is closed once the advertised deadline has passed, even while the worker is recovering.
+- Every minute, cleanup removes up to 100 practice rounds settled at least 24 hours ago,
+  including their fixtures, teams, events, contributions, results, invitations and cached
+  idempotent responses. Live/OPEN and ordinary rounds, users, wallets and purchases are kept.
+  Under normal load this is roughly 480 retained completed practice games plus active/queued
+  games. A backlog is removed in batches; 24 hours is a retention threshold, not an exact SLA.
+- Expired round/team/invitation links return 404. Never hardcode demo IDs or keep them as
+  permanent profile history. Use the session endpoint to recover from a stale bookmark.
+- `POST /dev/rounds/{id}/open|start|settle` and `/dev/simulator/start` reject managed practice
+  rounds with **409 `DEMO_MANAGED`**. `/dev/simulator/stop` only stops the separate manual
+  simulator. `/dev/simulator` is not the status API for the continuous loop.
+- To pause the loop, set `SPORTY_DEMO_ENABLED=false` in `.env` and recreate the app:
+  `docker compose up -d app`. Existing practice rows remain, completed-round cleanup continues,
+  and `session.enabled=false`. Re-enable and recreate to resume. A plain `docker compose restart`
+  does not apply changed environment settings. Outside Compose the property defaults to false;
+  local Java development can opt in with `SPORTY_DEMO_ENABLED=true` and the `local` profile.
+- `POST /api/v1/dev/reset` is still a **full destructive local reset**, not a routine way to
+  rotate games. It erases normal progress/purchases too. After an explicit reset, an enabled
+  worker recreates the demo pair on its next tick. Upgrading to this version needs **no reset**.
+- Run one backend instance as before; this change does not add distributed SSE, Kafka or Redis.
+  Existing ordinary fixtures are not converted to practice games or automatically settled.
+
+## Manual full demo with RP and shop (about three minutes)
 
 ```sh
 scripts/demo.sh
@@ -60,6 +342,7 @@ scripts/demo.sh --reset
 scripts/demo.sh --core --reset
 ```
 
+The script selects an ordinary (`demoMode=false`) round, independently of the continuous loop.
 The script uses bundled curl/jq inside the app container. It checks onboarding/rules, auto-pick,
 team creation, REST/SSE scores, a substitution with 60 real seconds of pending state, late goals,
 settlement, RP awards, gift purchase and an identical retry without a second debit.
@@ -114,7 +397,7 @@ the outgoing player still scores. It disappears when active. The captain is neve
 - Home Hero: active starter matching the team's saved home country gets **+2 per goal/assist**,
   outside both multipliers. A home captain's late goal is 5×2×2+2 = **22 points**.
 - One substitution per round, effective **60 real seconds** after acceptance.
-- Completed round: **50 RP** per participant, **100 extra RP** for every rank-1 team, including
+- Completed ordinary round (`demoMode=false`): **50 RP** per participant, **100 extra RP** for every rank-1 team, including
   ties and solo entrants. Fantasy score and spendable RP are separate balances.
 - Settlement freezes scores and awards RP in one transaction. Pending substitutions or an
   actively running simulator block settlement. No corrections/reopening after settlement.
@@ -149,15 +432,15 @@ POST `/api/v1/internal/match-events` with the configured `X-Provider-Token` (dem
 200 means the transaction committed. Exact duplicates return original acceptance; changed payload
 with the same revision is rejected. Higher revisions replace prior events; `voided:true` cancels
 one. Older revisions are stored without rescoring. Occurrence time selects the active lineup;
-football minute selects the late-goal multiplier. The simulator compresses each match minute to
+football minute selects the late-goal multiplier. The separate manual simulator compresses each match minute to
 two real seconds, includes duplicates/corrections/delayed events, and resumes from stored events
-when explicitly started after a restart. It is stopped by default on app restart.
+when explicitly started after a restart. The manual simulator is stopped by default on app restart; the continuous demo resumes automatically.
 
 SSE sends named `ROUND_SNAPSHOT` events every two seconds with `stateVersion`, `asOf`, round,
 `myTeam`, top-100 global `leaderboard`, and own `result` when settled. Replace state rather than
 adding deltas. For equal versions accept newer `asOf` (pending substitutions can activate without
 a database mutation). Reconnect immediately sends current state; no Last-Event-ID replay.
-On settlement refresh `/rewards/wallet`; purchases use REST responses. All private team/result/
+On ordinary-round settlement refresh `/rewards/wallet`; purchases use REST responses. All private team/result/
 purchase data is owner-scoped. REST pagination uses `items/page/size/total`; leaderboard wraps
 its page in `standings`.
 
@@ -192,8 +475,13 @@ substitution intervals, optimistic conflicts, final settlement, RP crediting, co
 injected transaction failures, SSE ownership and simulator replay. Implementation status and
 acceptance evidence are tracked in [PLAN.md](PLAN.md).
 
-Verified on 2026-10-29: **120 passing automated checks**, including all 60 publicly accessible
-player portraits, avatars, social-content APIs, profile history, invitations, Play filters and reward eligibility. The complete Compose scenario covers gift purchase;
+Verified on 2026-10-29: **130 passing automated checks**, including all 60 publicly accessible
+player portraits, avatars, social-content APIs, profile history, invitations, Play filters and reward eligibility.
+Continuous-demo checks cover rotation, disabled mode, concurrent ticks, failed-transaction rollback,
+restart/cursor recovery, substitution deadlines, zero awards/permanent progress, retention and reset.
+The running Compose instance was also restarted and observed through automatic rotations: SSE
+scores changed, demo results awarded 0 RP, and existing wallets, ledger, purchases and ordinary
+results stayed identical. The complete manual Compose scenario covers gift purchase;
 the earlier 2026-10-27 check also confirmed persistence of results, wallet and purchases and SSE
 reconnection across an app restart.
 

@@ -605,3 +605,32 @@ Banter writes and manager backing transactions remain outside scope.
 - Verify persisted seed idempotence, result/contribution/ledger equality, calendar filters,
   actual participants, 80% avatars, invite isolation/acceptance, public assets, free/paid claim
   eligibility, retry behavior and concurrent one-time claims. Do not generate another ZIP.
+
+## 14. Continuous practice arena (2026-10-29)
+
+- Explicitly authorized always-live demo, enabled by default in Compose, disabled by default
+  for local Java unless opted in. One 180-second LIVE round and one OPEN entry slot, with
+  new UUIDs/fixtures and eight seeded opponents; Alice/Dave enter explicitly each time.
+- Persisted `demo_round` marker, end time and event cursor. Same scoring/teams/substitution/SSE
+  APIs; new authenticated `/demo/session` for current/next discovery and `demoMode` list filter.
+- Preserve 60-second substitution activation; accept swaps only during first 120 seconds.
+  Start the next game even if exceptional pending substitutions postpone the previous result.
+- Demo scoring and final rank work, but RP awards are zero and all demo progress is excluded
+  from permanent leaderboard, reward eligibility, profile history/XP/stats/badges. Ordinary
+  rounds retain existing behavior. `simulated` is distinct from `demoMode`.
+- Atomic transactional ticks, persisted event deduplication/cursor, restart recovery without
+  replaying every missed slot, serialized reset and cleanup. Manual dev controls reject
+  managed rounds. No new infrastructure or distributed delivery.
+- Retain settled demo games for 24 hours, then remove dependent transient data in batches of
+  100/minute. Preserve wallets, purchases, user/player identities and all ordinary history.
+- README documents auth, session polling, per-round EventSource rotation, entry/substitution,
+  recap, null/disabled/expired states, pause/restart/reset and permanent-progress protection.
+- Acceptance: integration tests for concurrent/failed ticks, persistence, 3 club pairs,
+  zero awards/profile changes, delayed swaps, manual guards, scoped retention and reset;
+  Compose rotation plus restart/reconnect, existing-data preservation and updated OpenAPI.
+
+Verification for §14: `./mvnw verify` passes all **130 checks** (74 unit/security + 56
+PostgreSQL integration). Compose upgrade applied V7 without reset; cookie-authenticated SSE
+showed changing scores after app restart, repeated rotations settled with 0 RP, and a comparison
+against the pre-upgrade snapshot preserved all ordinary results/wallets/ledger/purchases.
+Profile and rewards integration documentation and generated OpenAPI include the new mode.

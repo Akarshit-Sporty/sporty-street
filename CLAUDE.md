@@ -19,6 +19,8 @@ it is the source of truth.** The overriding priority is simplicity and a working
   rivalries, Banter and manager discovery. Keep them explicit previews; no social writes or
   fan-points wallet. The later 2026-10-29 request also authorizes persisted friends and round
   invitations, profile/history/XP, scheduled sample rounds and tiered rewards (PLAN §13).
+  PLAN §14 also authorizes continuous practice rounds: zero RP/permanent progress, 24-hour
+  demo retention, current/next discovery and automatic restart recovery. Ordinary rewards stay unchanged.
   Do not expose another user's saved lineup through preview endpoints.
 
 ## Conventions

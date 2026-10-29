@@ -35,11 +35,13 @@ public class DevGameController {
 
   @PostMapping("/rounds/{id}/open")
   public RoundService.RoundResponse open(@PathVariable UUID id) {
+    rounds.requireManual(id);
     return rounds.open(id);
   }
 
   @PostMapping("/rounds/{id}/start")
   public RoundService.RoundResponse start(@PathVariable UUID id) {
+    rounds.requireManual(id);
     return lifecycle.start(id, true);
   }
 

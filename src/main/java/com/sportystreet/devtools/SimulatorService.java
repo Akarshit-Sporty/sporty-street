@@ -61,6 +61,7 @@ public class SimulatorService {
   }
 
   public synchronized Status start(UUID id) {
+    rounds.requireManual(id);
     if (running) {
       if (!id.equals(roundId))
         throw new ApiException(409, "ROUND_BUSY", "Another simulation is running");
@@ -105,6 +106,7 @@ public class SimulatorService {
   }
 
   public synchronized SettlementService.Summary settle(UUID id) {
+    rounds.requireManual(id);
     if (running && id.equals(roundId))
       throw new ApiException(409, "ROUND_BUSY", "Stop or finish the simulator before settlement");
     return settlement.settle(id);

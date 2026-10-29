@@ -17,6 +17,7 @@ services:
     build: .
     environment:
       SPRING_PROFILES_ACTIVE: local
+      SPORTY_DEMO_ENABLED: ${SPORTY_DEMO_ENABLED:-true}
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-sportystreet}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-sportystreet}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-sportystreet-demo}
