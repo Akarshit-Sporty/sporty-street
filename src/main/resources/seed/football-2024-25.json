@@ -1,0 +1,614 @@
+{
+  "season": "2024/25",
+  "description": "Selected real players and club affiliations from the 2024/25 season; fixtures, results and rewards fulfilment are simulated.",
+  "countries": [
+    {
+      "code": "BRA",
+      "name": "Brazil"
+    },
+    {
+      "code": "FRA",
+      "name": "France"
+    },
+    {
+      "code": "ENG",
+      "name": "England"
+    },
+    {
+      "code": "ESP",
+      "name": "Spain"
+    },
+    {
+      "code": "ARG",
+      "name": "Argentina"
+    },
+    {
+      "code": "DEU",
+      "name": "Germany"
+    },
+    {
+      "code": "PRT",
+      "name": "Portugal"
+    },
+    {
+      "code": "ITA",
+      "name": "Italy"
+    },
+    {
+      "code": "NLD",
+      "name": "Netherlands"
+    },
+    {
+      "code": "URY",
+      "name": "Uruguay"
+    },
+    {
+      "code": "BEL",
+      "name": "Belgium"
+    },
+    {
+      "code": "HRV",
+      "name": "Croatia"
+    },
+    {
+      "code": "POL",
+      "name": "Poland"
+    },
+    {
+      "code": "NOR",
+      "name": "Norway"
+    },
+    {
+      "code": "EGY",
+      "name": "Egypt"
+    },
+    {
+      "code": "HUN",
+      "name": "Hungary"
+    },
+    {
+      "code": "COL",
+      "name": "Colombia"
+    },
+    {
+      "code": "SCO",
+      "name": "Scotland"
+    },
+    {
+      "code": "CAN",
+      "name": "Canada"
+    },
+    {
+      "code": "KOR",
+      "name": "South Korea"
+    },
+    {
+      "code": "MAR",
+      "name": "Morocco"
+    }
+  ],
+  "clubs": [
+    {
+      "name": "Real Madrid",
+      "countryCode": "ESP",
+      "sourceUrl": "https://www.uefa.com/newsfiles/UCL/2025/2044474_SPS.pdf",
+      "players": [
+        {
+          "name": "Thibaut Courtois",
+          "position": "GK",
+          "countryCode": "BEL",
+          "slug": "thibaut-courtois",
+          "wikipediaTitle": "Thibaut Courtois",
+          "imageUrl": "/media/players/thibaut-courtois.jpg"
+        },
+        {
+          "name": "Jude Bellingham",
+          "position": "MID",
+          "countryCode": "ENG",
+          "slug": "jude-bellingham",
+          "wikipediaTitle": "Jude Bellingham",
+          "imageUrl": "/media/players/jude-bellingham.jpg"
+        },
+        {
+          "name": "Vinícius Júnior",
+          "position": "FWD",
+          "countryCode": "BRA",
+          "slug": "vinicius-junior",
+          "wikipediaTitle": "Vinícius Júnior",
+          "imageUrl": "/media/players/vinicius-junior.jpg"
+        },
+        {
+          "name": "Kylian Mbappé",
+          "position": "FWD",
+          "countryCode": "FRA",
+          "slug": "kylian-mbappe",
+          "wikipediaTitle": "Kylian Mbappé",
+          "imageUrl": "/media/players/kylian-mbappe.jpg"
+        },
+        {
+          "name": "Rodrygo",
+          "position": "FWD",
+          "countryCode": "BRA",
+          "slug": "rodrygo",
+          "wikipediaTitle": "Rodrygo",
+          "imageUrl": "/media/players/rodrygo.jpg"
+        },
+        {
+          "name": "Federico Valverde",
+          "position": "MID",
+          "countryCode": "URY",
+          "slug": "federico-valverde",
+          "wikipediaTitle": "Federico Valverde",
+          "imageUrl": "/media/players/federico-valverde.jpg"
+        },
+        {
+          "name": "Eduardo Camavinga",
+          "position": "MID",
+          "countryCode": "FRA",
+          "slug": "eduardo-camavinga",
+          "wikipediaTitle": "Eduardo Camavinga",
+          "imageUrl": "/media/players/eduardo-camavinga.jpg"
+        },
+        {
+          "name": "Aurélien Tchouaméni",
+          "position": "MID",
+          "countryCode": "FRA",
+          "slug": "aurelien-tchouameni",
+          "wikipediaTitle": "Aurélien Tchouaméni",
+          "imageUrl": "/media/players/aurelien-tchouameni.jpg"
+        },
+        {
+          "name": "Luka Modrić",
+          "position": "MID",
+          "countryCode": "HRV",
+          "slug": "luka-modric",
+          "wikipediaTitle": "Luka Modrić",
+          "imageUrl": "/media/players/luka-modric.jpg"
+        },
+        {
+          "name": "Ferland Mendy",
+          "position": "DEF",
+          "countryCode": "FRA",
+          "slug": "ferland-mendy",
+          "wikipediaTitle": "Ferland Mendy",
+          "imageUrl": "/media/players/ferland-mendy.jpg"
+        }
+      ]
+    },
+    {
+      "name": "FC Barcelona",
+      "countryCode": "ESP",
+      "sourceUrl": "https://www.fcbarcelona.com/en/football/first-team/news/4107039/fc-barcelona-a-and-b-squads-for-champions-league-official",
+      "players": [
+        {
+          "name": "Marc-André ter Stegen",
+          "position": "GK",
+          "countryCode": "DEU",
+          "slug": "marc-andre-ter-stegen",
+          "wikipediaTitle": "Marc-André ter Stegen",
+          "imageUrl": "/media/players/marc-andre-ter-stegen.jpg"
+        },
+        {
+          "name": "Robert Lewandowski",
+          "position": "FWD",
+          "countryCode": "POL",
+          "slug": "robert-lewandowski",
+          "wikipediaTitle": "Robert Lewandowski",
+          "imageUrl": "/media/players/robert-lewandowski.jpg"
+        },
+        {
+          "name": "Lamine Yamal",
+          "position": "FWD",
+          "countryCode": "ESP",
+          "slug": "lamine-yamal",
+          "wikipediaTitle": "Lamine Yamal",
+          "imageUrl": "/media/players/lamine-yamal.jpg"
+        },
+        {
+          "name": "Raphinha",
+          "position": "FWD",
+          "countryCode": "BRA",
+          "slug": "raphinha",
+          "wikipediaTitle": "Raphinha",
+          "imageUrl": "/media/players/raphinha.jpg"
+        },
+        {
+          "name": "Pedri",
+          "position": "MID",
+          "countryCode": "ESP",
+          "slug": "pedri",
+          "wikipediaTitle": "Pedri",
+          "imageUrl": "/media/players/pedri.jpg"
+        },
+        {
+          "name": "Gavi",
+          "position": "MID",
+          "countryCode": "ESP",
+          "slug": "gavi",
+          "wikipediaTitle": "Gavi (footballer)",
+          "imageUrl": "/media/players/gavi.jpg"
+        },
+        {
+          "name": "Frenkie de Jong",
+          "position": "MID",
+          "countryCode": "NLD",
+          "slug": "frenkie-de-jong",
+          "wikipediaTitle": "Frenkie de Jong",
+          "imageUrl": "/media/players/frenkie-de-jong.png"
+        },
+        {
+          "name": "Ronald Araújo",
+          "position": "DEF",
+          "countryCode": "URY",
+          "slug": "ronald-araujo",
+          "wikipediaTitle": "Ronald Araújo",
+          "imageUrl": "/media/players/ronald-araujo.jpg"
+        },
+        {
+          "name": "Jules Koundé",
+          "position": "DEF",
+          "countryCode": "FRA",
+          "slug": "jules-kounde",
+          "wikipediaTitle": "Jules Koundé",
+          "imageUrl": "/media/players/jules-kounde.jpg"
+        },
+        {
+          "name": "Dani Olmo",
+          "position": "MID",
+          "countryCode": "ESP",
+          "slug": "dani-olmo",
+          "wikipediaTitle": "Dani Olmo",
+          "imageUrl": "/media/players/dani-olmo.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Manchester City",
+      "countryCode": "ENG",
+      "sourceUrl": "https://www.premierleague.com/en/news/4243590",
+      "players": [
+        {
+          "name": "Ederson",
+          "position": "GK",
+          "countryCode": "BRA",
+          "slug": "ederson",
+          "wikipediaTitle": "Ederson (footballer, born 1993)",
+          "imageUrl": "/media/players/ederson.jpg"
+        },
+        {
+          "name": "Erling Haaland",
+          "position": "FWD",
+          "countryCode": "NOR",
+          "slug": "erling-haaland",
+          "wikipediaTitle": "Erling Haaland",
+          "imageUrl": "/media/players/erling-haaland.jpg"
+        },
+        {
+          "name": "Kevin De Bruyne",
+          "position": "MID",
+          "countryCode": "BEL",
+          "slug": "kevin-de-bruyne",
+          "wikipediaTitle": "Kevin De Bruyne",
+          "imageUrl": "/media/players/kevin-de-bruyne.jpg"
+        },
+        {
+          "name": "Phil Foden",
+          "position": "MID",
+          "countryCode": "ENG",
+          "slug": "phil-foden",
+          "wikipediaTitle": "Phil Foden",
+          "imageUrl": "/media/players/phil-foden.jpg"
+        },
+        {
+          "name": "Bernardo Silva",
+          "position": "MID",
+          "countryCode": "PRT",
+          "slug": "bernardo-silva",
+          "wikipediaTitle": "Bernardo Silva",
+          "imageUrl": "/media/players/bernardo-silva.jpg"
+        },
+        {
+          "name": "Rodri",
+          "position": "MID",
+          "countryCode": "ESP",
+          "slug": "rodri",
+          "wikipediaTitle": "Rodri (footballer, born 1996)",
+          "imageUrl": "/media/players/rodri.jpg"
+        },
+        {
+          "name": "Rúben Dias",
+          "position": "DEF",
+          "countryCode": "PRT",
+          "slug": "ruben-dias",
+          "wikipediaTitle": "Rúben Dias",
+          "imageUrl": "/media/players/ruben-dias.jpg"
+        },
+        {
+          "name": "John Stones",
+          "position": "DEF",
+          "countryCode": "ENG",
+          "slug": "john-stones",
+          "wikipediaTitle": "John Stones",
+          "imageUrl": "/media/players/john-stones.jpg"
+        },
+        {
+          "name": "İlkay Gündoğan",
+          "position": "MID",
+          "countryCode": "DEU",
+          "slug": "ilkay-gundogan",
+          "wikipediaTitle": "İlkay Gündoğan",
+          "imageUrl": "/media/players/ilkay-gundogan.jpg"
+        },
+        {
+          "name": "Jérémy Doku",
+          "position": "FWD",
+          "countryCode": "BEL",
+          "slug": "jeremy-doku",
+          "wikipediaTitle": "Jérémy Doku",
+          "imageUrl": "/media/players/jeremy-doku.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Liverpool",
+      "countryCode": "ENG",
+      "sourceUrl": "https://www.premierleague.com/en/news/4243590",
+      "players": [
+        {
+          "name": "Alisson Becker",
+          "position": "GK",
+          "countryCode": "BRA",
+          "slug": "alisson-becker",
+          "wikipediaTitle": "Alisson Becker",
+          "imageUrl": "/media/players/alisson-becker.jpg"
+        },
+        {
+          "name": "Mohamed Salah",
+          "position": "FWD",
+          "countryCode": "EGY",
+          "slug": "mohamed-salah",
+          "wikipediaTitle": "Mohamed Salah",
+          "imageUrl": "/media/players/mohamed-salah.jpg"
+        },
+        {
+          "name": "Virgil van Dijk",
+          "position": "DEF",
+          "countryCode": "NLD",
+          "slug": "virgil-van-dijk",
+          "wikipediaTitle": "Virgil van Dijk",
+          "imageUrl": "/media/players/virgil-van-dijk.jpg"
+        },
+        {
+          "name": "Trent Alexander-Arnold",
+          "position": "DEF",
+          "countryCode": "ENG",
+          "slug": "trent-alexander-arnold",
+          "wikipediaTitle": "Trent Alexander-Arnold",
+          "imageUrl": "/media/players/trent-alexander-arnold.jpg"
+        },
+        {
+          "name": "Alexis Mac Allister",
+          "position": "MID",
+          "countryCode": "ARG",
+          "slug": "alexis-mac-allister",
+          "wikipediaTitle": "Alexis Mac Allister",
+          "imageUrl": "/media/players/alexis-mac-allister.jpg"
+        },
+        {
+          "name": "Dominik Szoboszlai",
+          "position": "MID",
+          "countryCode": "HUN",
+          "slug": "dominik-szoboszlai",
+          "wikipediaTitle": "Dominik Szoboszlai",
+          "imageUrl": "/media/players/dominik-szoboszlai.jpg"
+        },
+        {
+          "name": "Luis Díaz",
+          "position": "FWD",
+          "countryCode": "COL",
+          "slug": "luis-diaz",
+          "wikipediaTitle": "Luis Díaz (footballer, born 1997)",
+          "imageUrl": "/media/players/luis-diaz.jpg"
+        },
+        {
+          "name": "Cody Gakpo",
+          "position": "FWD",
+          "countryCode": "NLD",
+          "slug": "cody-gakpo",
+          "wikipediaTitle": "Cody Gakpo",
+          "imageUrl": "/media/players/cody-gakpo.jpg"
+        },
+        {
+          "name": "Darwin Núñez",
+          "position": "FWD",
+          "countryCode": "URY",
+          "slug": "darwin-nunez",
+          "wikipediaTitle": "Darwin Núñez",
+          "imageUrl": "/media/players/darwin-nunez.jpg"
+        },
+        {
+          "name": "Andrew Robertson",
+          "position": "DEF",
+          "countryCode": "SCO",
+          "slug": "andrew-robertson",
+          "wikipediaTitle": "Andrew Robertson",
+          "imageUrl": "/media/players/andrew-robertson.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Bayern Munich",
+      "countryCode": "DEU",
+      "sourceUrl": "https://www.uefa.com/uefachampionsleague/news/0291-1bc65e0e076c-183869e729fd-1000--champions-league-squads-league-phase-selections-confirmed/",
+      "players": [
+        {
+          "name": "Manuel Neuer",
+          "position": "GK",
+          "countryCode": "DEU",
+          "slug": "manuel-neuer",
+          "wikipediaTitle": "Manuel Neuer",
+          "imageUrl": "/media/players/manuel-neuer.jpg"
+        },
+        {
+          "name": "Harry Kane",
+          "position": "FWD",
+          "countryCode": "ENG",
+          "slug": "harry-kane",
+          "wikipediaTitle": "Harry Kane",
+          "imageUrl": "/media/players/harry-kane.jpg"
+        },
+        {
+          "name": "Jamal Musiala",
+          "position": "MID",
+          "countryCode": "DEU",
+          "slug": "jamal-musiala",
+          "wikipediaTitle": "Jamal Musiala",
+          "imageUrl": "/media/players/jamal-musiala.jpg"
+        },
+        {
+          "name": "Joshua Kimmich",
+          "position": "MID",
+          "countryCode": "DEU",
+          "slug": "joshua-kimmich",
+          "wikipediaTitle": "Joshua Kimmich",
+          "imageUrl": "/media/players/joshua-kimmich.jpg"
+        },
+        {
+          "name": "Thomas Müller",
+          "position": "FWD",
+          "countryCode": "DEU",
+          "slug": "thomas-muller",
+          "wikipediaTitle": "Thomas Müller",
+          "imageUrl": "/media/players/thomas-muller.jpg"
+        },
+        {
+          "name": "Leroy Sané",
+          "position": "FWD",
+          "countryCode": "DEU",
+          "slug": "leroy-sane",
+          "wikipediaTitle": "Leroy Sané",
+          "imageUrl": "/media/players/leroy-sane.jpg"
+        },
+        {
+          "name": "Serge Gnabry",
+          "position": "FWD",
+          "countryCode": "DEU",
+          "slug": "serge-gnabry",
+          "wikipediaTitle": "Serge Gnabry",
+          "imageUrl": "/media/players/serge-gnabry.jpg"
+        },
+        {
+          "name": "Alphonso Davies",
+          "position": "DEF",
+          "countryCode": "CAN",
+          "slug": "alphonso-davies",
+          "wikipediaTitle": "Alphonso Davies",
+          "imageUrl": "/media/players/alphonso-davies.jpg"
+        },
+        {
+          "name": "Kim Min-jae",
+          "position": "DEF",
+          "countryCode": "KOR",
+          "slug": "kim-min-jae",
+          "wikipediaTitle": "Kim Min-jae (footballer)",
+          "imageUrl": "/media/players/kim-min-jae.jpg"
+        },
+        {
+          "name": "Michael Olise",
+          "position": "FWD",
+          "countryCode": "FRA",
+          "slug": "michael-olise",
+          "wikipediaTitle": "Michael Olise",
+          "imageUrl": "/media/players/michael-olise.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Paris Saint-Germain",
+      "countryCode": "FRA",
+      "sourceUrl": "https://en.psg.fr/teams/first-team/squad?seasonId=2020",
+      "players": [
+        {
+          "name": "Gianluigi Donnarumma",
+          "position": "GK",
+          "countryCode": "ITA",
+          "slug": "gianluigi-donnarumma",
+          "wikipediaTitle": "Gianluigi Donnarumma",
+          "imageUrl": "/media/players/gianluigi-donnarumma.jpg"
+        },
+        {
+          "name": "Achraf Hakimi",
+          "position": "DEF",
+          "countryCode": "MAR",
+          "slug": "achraf-hakimi",
+          "wikipediaTitle": "Achraf Hakimi",
+          "imageUrl": "/media/players/achraf-hakimi.jpg"
+        },
+        {
+          "name": "Marquinhos",
+          "position": "DEF",
+          "countryCode": "BRA",
+          "slug": "marquinhos",
+          "wikipediaTitle": "Marquinhos",
+          "imageUrl": "/media/players/marquinhos.jpg"
+        },
+        {
+          "name": "Nuno Mendes",
+          "position": "DEF",
+          "countryCode": "PRT",
+          "slug": "nuno-mendes",
+          "wikipediaTitle": "Nuno Mendes (footballer, born 2002)",
+          "imageUrl": "/media/players/nuno-mendes.jpg"
+        },
+        {
+          "name": "Vitinha",
+          "position": "MID",
+          "countryCode": "PRT",
+          "slug": "vitinha",
+          "wikipediaTitle": "Vitinha (footballer, born 2000)",
+          "imageUrl": "/media/players/vitinha.jpg"
+        },
+        {
+          "name": "Fabián Ruiz",
+          "position": "MID",
+          "countryCode": "ESP",
+          "slug": "fabian-ruiz",
+          "wikipediaTitle": "Fabián Ruiz",
+          "imageUrl": "/media/players/fabian-ruiz.jpg"
+        },
+        {
+          "name": "João Neves",
+          "position": "MID",
+          "countryCode": "PRT",
+          "slug": "joao-neves",
+          "wikipediaTitle": "João Neves",
+          "imageUrl": "/media/players/joao-neves.jpg"
+        },
+        {
+          "name": "Ousmane Dembélé",
+          "position": "FWD",
+          "countryCode": "FRA",
+          "slug": "ousmane-dembele",
+          "wikipediaTitle": "Ousmane Dembélé",
+          "imageUrl": "/media/players/ousmane-dembele.jpg"
+        },
+        {
+          "name": "Bradley Barcola",
+          "position": "FWD",
+          "countryCode": "FRA",
+          "slug": "bradley-barcola",
+          "wikipediaTitle": "Bradley Barcola",
+          "imageUrl": "/media/players/bradley-barcola.jpg"
+        },
+        {
+          "name": "Gonçalo Ramos",
+          "position": "FWD",
+          "countryCode": "PRT",
+          "slug": "goncalo-ramos",
+          "wikipediaTitle": "Gonçalo Ramos",
+          "imageUrl": "/media/players/goncalo-ramos.jpg"
+        }
+      ]
+    }
+  ]
+}

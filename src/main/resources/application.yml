@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: sporty-street
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/sportystreet}
+    username: ${DATABASE_USER:sportystreet}
+    password: ${DATABASE_PASSWORD:sportystreet-demo}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  threads:
+    virtual:
+      enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+sporty:
+  provider:
+    name: simulator
+    token: ${SPORTY_PROVIDER_TOKEN:}

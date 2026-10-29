@@ -1,0 +1,1302 @@
+{
+  "profiles": [
+    {
+      "id": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "username": "alice",
+      "displayName": "Alice",
+      "teamName": "Alice's Five",
+      "avatarUrl": "/media/avatars/alice.jpg",
+      "countryCode": "BRA",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "05fe36cb-8626-39e1-ac92-2d8011c3fbe3",
+      "username": "bob",
+      "displayName": "Bob",
+      "teamName": "Bob's Five",
+      "avatarUrl": "/media/avatars/bob.jpg",
+      "countryCode": "FRA",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "6a6b242d-62ad-36db-b4e7-dace7b62d5ab",
+      "username": "carol",
+      "displayName": "Carol",
+      "teamName": "Carol's Five",
+      "avatarUrl": "/media/avatars/carol.jpg",
+      "countryCode": "ENG",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "87bf2635-411f-39a7-95f8-b33f1b5617fc",
+      "username": "dave",
+      "displayName": "Dave",
+      "teamName": "Dave's Five",
+      "avatarUrl": "/media/avatars/dave.jpg",
+      "countryCode": "ESP",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "e6e85959-8ad5-3f1d-9071-16c675820796",
+      "username": "eve",
+      "displayName": "Eve",
+      "teamName": "Eve's Five",
+      "avatarUrl": "/media/avatars/eve.jpg",
+      "countryCode": "ARG",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "ef07c343-d174-3a2f-972f-8910eaaf9f51",
+      "username": "frank",
+      "displayName": "Frank",
+      "teamName": "Frank's Five",
+      "avatarUrl": "/media/avatars/frank.jpg",
+      "countryCode": "DEU",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "030fff23-3373-3b5c-8a81-cbc8cd116423",
+      "username": "grace",
+      "displayName": "Grace",
+      "teamName": "Grace's Five",
+      "avatarUrl": "/media/avatars/grace.jpg",
+      "countryCode": "PRT",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "8110e4b9-d3e9-3556-add2-40aa53cf2e7a",
+      "username": "henry",
+      "displayName": "Henry",
+      "teamName": "Henry's Five",
+      "avatarUrl": "/media/avatars/henry.jpg",
+      "countryCode": "NLD",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "d10c34fc-891e-38ec-96d9-eaa673221f4f",
+      "username": null,
+      "displayName": "Ada",
+      "teamName": "Ada FC",
+      "avatarUrl": "/media/avatars/grace.jpg",
+      "countryCode": "NGA",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "39100132-983b-30e8-8501-41d67544f2b3",
+      "username": null,
+      "displayName": "Tunde",
+      "teamName": "Tunde XI",
+      "avatarUrl": "/media/avatars/dave.jpg",
+      "countryCode": "NGA",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "f70d195a-b9e2-3e9c-938e-14c040ee2d65",
+      "username": null,
+      "displayName": "Folake",
+      "teamName": "Folake United",
+      "avatarUrl": "/media/avatars/eve.jpg",
+      "countryCode": "NGA",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "fde4e0b2-67ea-34ae-9f4f-7ea23ecfd66c",
+      "username": null,
+      "displayName": "Emeka",
+      "teamName": "Emeka's Eagles",
+      "avatarUrl": "/media/avatars/bob.jpg",
+      "countryCode": "NGA",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "1212fc82-365d-32ef-9a0f-b94b7bb55138",
+      "username": null,
+      "displayName": "Bolu",
+      "teamName": "Bolu Bros",
+      "avatarUrl": "/media/avatars/frank.jpg",
+      "countryCode": "NGA",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "1f3064cf-dfe4-34c2-a392-3ab43987146e",
+      "username": null,
+      "displayName": "Kemi",
+      "teamName": "Kemi Kickers",
+      "avatarUrl": "/media/avatars/carol.jpg",
+      "countryCode": "NGA",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "ee3a29c7-4c59-355e-824d-7c395c8adb2c",
+      "username": null,
+      "displayName": "Zainab",
+      "teamName": "Zainab Strikers",
+      "avatarUrl": "/media/avatars/alice.jpg",
+      "countryCode": "NGA",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "acef63b6-9ac0-3c18-afd5-36eec2471cc6",
+      "username": null,
+      "displayName": "Ikenna",
+      "teamName": "Ikenna FC",
+      "avatarUrl": "/media/avatars/henry.jpg",
+      "countryCode": "NGA",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "75a1098d-ebf2-368e-9990-f02c877141c8",
+      "username": null,
+      "displayName": "Sade",
+      "teamName": "Sade Squad",
+      "avatarUrl": "/media/avatars/grace.jpg",
+      "countryCode": "NGA",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "1f9711d9-db20-390f-82ba-5ea642f390ae",
+      "username": null,
+      "displayName": "Musa",
+      "teamName": "Musa Masters",
+      "avatarUrl": "/media/avatars/dave.jpg",
+      "countryCode": "NGA",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "5753b898-f474-3adb-bd19-64306002dc5b",
+      "username": null,
+      "displayName": "Uche",
+      "teamName": "Uche United",
+      "avatarUrl": "/media/avatars/frank.jpg",
+      "countryCode": "NGA",
+      "creator": false,
+      "fans": 0
+    },
+    {
+      "id": "bda1ee8b-b247-3833-a1fd-132e40c4151c",
+      "username": null,
+      "displayName": "Mr. Pundit",
+      "teamName": "Pundit Picks",
+      "avatarUrl": "/media/avatars/mr-pundit.jpg",
+      "countryCode": "ENG",
+      "creator": true,
+      "fans": 124000
+    },
+    {
+      "id": "46f1b237-c4a0-35f7-bafe-896b5620df5f",
+      "username": null,
+      "displayName": "Kay Football",
+      "teamName": "Kay FC",
+      "avatarUrl": "/media/avatars/kay-football.jpg",
+      "countryCode": "NGA",
+      "creator": true,
+      "fans": 88000
+    },
+    {
+      "id": "676251f3-7b82-3aa2-8395-5b74c1cc3b2d",
+      "username": null,
+      "displayName": "Samba Tactics",
+      "teamName": "Samba XI",
+      "avatarUrl": "/media/avatars/samba-tactics.jpg",
+      "countryCode": "BRA",
+      "creator": true,
+      "fans": 52000
+    },
+    {
+      "id": "a6855e8c-17a6-3012-96e2-2baafa622463",
+      "username": null,
+      "displayName": "Abi Ballon",
+      "teamName": "Ballon Stars",
+      "avatarUrl": "/media/avatars/abi-ballon.jpg",
+      "countryCode": "FRA",
+      "creator": true,
+      "fans": 31000
+    }
+  ],
+  "leagues": [
+    {
+      "id": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "slug": "lagos-ballers",
+      "name": "Lagos Ballers",
+      "type": "FRIENDS",
+      "format": "SEASON",
+      "inviteCode": "LAGOS-5K",
+      "imageUrl": "/media/leagues/lagos-ballers.jpg",
+      "creatorId": null,
+      "seasonRounds": 14,
+      "roundsRemaining": 6,
+      "description": "Friends, football and bragging rights.",
+      "members": [
+        {
+          "profileId": "d10c34fc-891e-38ec-96d9-eaa673221f4f",
+          "score": 1284,
+          "wins": 6
+        },
+        {
+          "profileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+          "score": 1262,
+          "wins": 4
+        },
+        {
+          "profileId": "39100132-983b-30e8-8501-41d67544f2b3",
+          "score": 1190,
+          "wins": 3
+        },
+        {
+          "profileId": "f70d195a-b9e2-3e9c-938e-14c040ee2d65",
+          "score": 1104,
+          "wins": 1
+        },
+        {
+          "profileId": "fde4e0b2-67ea-34ae-9f4f-7ea23ecfd66c",
+          "score": 1032,
+          "wins": 1
+        },
+        {
+          "profileId": "1212fc82-365d-32ef-9a0f-b94b7bb55138",
+          "score": 987,
+          "wins": 0
+        },
+        {
+          "profileId": "1f3064cf-dfe4-34c2-a392-3ab43987146e",
+          "score": 951,
+          "wins": 1
+        },
+        {
+          "profileId": "ee3a29c7-4c59-355e-824d-7c395c8adb2c",
+          "score": 903,
+          "wins": 0
+        },
+        {
+          "profileId": "acef63b6-9ac0-3c18-afd5-36eec2471cc6",
+          "score": 880,
+          "wins": 0
+        },
+        {
+          "profileId": "75a1098d-ebf2-368e-9990-f02c877141c8",
+          "score": 842,
+          "wins": 0
+        },
+        {
+          "profileId": "1f9711d9-db20-390f-82ba-5ea642f390ae",
+          "score": 815,
+          "wins": 0
+        },
+        {
+          "profileId": "5753b898-f474-3adb-bd19-64306002dc5b",
+          "score": 760,
+          "wins": 0
+        }
+      ]
+    },
+    {
+      "id": "3c308748-9ee2-373c-ad90-a278abe91fda",
+      "slug": "office-five",
+      "name": "Office Five · Opennet",
+      "type": "WORK",
+      "format": "EVERY_ROUND",
+      "inviteCode": "OFFICE-5",
+      "imageUrl": "/media/leagues/office-five.jpg",
+      "creatorId": null,
+      "seasonRounds": 14,
+      "roundsRemaining": 6,
+      "description": "The office league — settle it on the pitch.",
+      "members": [
+        {
+          "profileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+          "score": 1100,
+          "wins": 0
+        },
+        {
+          "profileId": "05fe36cb-8626-39e1-ac92-2d8011c3fbe3",
+          "score": 1067,
+          "wins": 1
+        },
+        {
+          "profileId": "6a6b242d-62ad-36db-b4e7-dace7b62d5ab",
+          "score": 1034,
+          "wins": 2
+        },
+        {
+          "profileId": "87bf2635-411f-39a7-95f8-b33f1b5617fc",
+          "score": 1001,
+          "wins": 3
+        },
+        {
+          "profileId": "e6e85959-8ad5-3f1d-9071-16c675820796",
+          "score": 968,
+          "wins": 0
+        },
+        {
+          "profileId": "ef07c343-d174-3a2f-972f-8910eaaf9f51",
+          "score": 935,
+          "wins": 1
+        },
+        {
+          "profileId": "030fff23-3373-3b5c-8a81-cbc8cd116423",
+          "score": 902,
+          "wins": 2
+        },
+        {
+          "profileId": "8110e4b9-d3e9-3556-add2-40aa53cf2e7a",
+          "score": 869,
+          "wins": 3
+        }
+      ]
+    },
+    {
+      "id": "56c60f08-02c0-303b-9577-ecaf7f2860c7",
+      "slug": "mr-pundit",
+      "name": "Mr. Pundit League",
+      "type": "CREATOR",
+      "format": "EVERY_ROUND",
+      "inviteCode": "MR-PUNDIT",
+      "imageUrl": "/media/leagues/mr-pundit.jpg",
+      "creatorId": "bda1ee8b-b247-3833-a1fd-132e40c4151c",
+      "seasonRounds": 14,
+      "roundsRemaining": 6,
+      "description": "Challenge the creator and climb the table.",
+      "members": [
+        {
+          "profileId": "bda1ee8b-b247-3833-a1fd-132e40c4151c",
+          "score": 1420,
+          "wins": 6
+        },
+        {
+          "profileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+          "score": 1262,
+          "wins": 4
+        },
+        {
+          "profileId": "05fe36cb-8626-39e1-ac92-2d8011c3fbe3",
+          "score": 1210,
+          "wins": 3
+        },
+        {
+          "profileId": "6a6b242d-62ad-36db-b4e7-dace7b62d5ab",
+          "score": 1170,
+          "wins": 2
+        }
+      ]
+    },
+    {
+      "id": "1a07d872-7cb1-34a6-8c2c-f059d68d75a8",
+      "slug": "kay-football",
+      "name": "Kay Football League",
+      "type": "CREATOR",
+      "format": "EVERY_ROUND",
+      "inviteCode": "KAY-FOOTBALL",
+      "imageUrl": "/media/leagues/kay-football.jpg",
+      "creatorId": "46f1b237-c4a0-35f7-bafe-896b5620df5f",
+      "seasonRounds": 14,
+      "roundsRemaining": 6,
+      "description": "Challenge the creator and climb the table.",
+      "members": [
+        {
+          "profileId": "46f1b237-c4a0-35f7-bafe-896b5620df5f",
+          "score": 1420,
+          "wins": 6
+        },
+        {
+          "profileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+          "score": 1262,
+          "wins": 4
+        },
+        {
+          "profileId": "05fe36cb-8626-39e1-ac92-2d8011c3fbe3",
+          "score": 1210,
+          "wins": 3
+        },
+        {
+          "profileId": "6a6b242d-62ad-36db-b4e7-dace7b62d5ab",
+          "score": 1170,
+          "wins": 2
+        }
+      ]
+    },
+    {
+      "id": "8901e5e6-a6d1-3224-a6cc-4cda12e0aade",
+      "slug": "samba-tactics",
+      "name": "Samba Tactics League",
+      "type": "CREATOR",
+      "format": "EVERY_ROUND",
+      "inviteCode": "SAMBA-TACTICS",
+      "imageUrl": "/media/leagues/samba-tactics.jpg",
+      "creatorId": "676251f3-7b82-3aa2-8395-5b74c1cc3b2d",
+      "seasonRounds": 14,
+      "roundsRemaining": 6,
+      "description": "Challenge the creator and climb the table.",
+      "members": [
+        {
+          "profileId": "676251f3-7b82-3aa2-8395-5b74c1cc3b2d",
+          "score": 1420,
+          "wins": 6
+        },
+        {
+          "profileId": "05fe36cb-8626-39e1-ac92-2d8011c3fbe3",
+          "score": 1210,
+          "wins": 3
+        },
+        {
+          "profileId": "6a6b242d-62ad-36db-b4e7-dace7b62d5ab",
+          "score": 1170,
+          "wins": 2
+        }
+      ]
+    },
+    {
+      "id": "046e1190-0e09-3ce2-acd3-689f64b37664",
+      "slug": "abi-ballon",
+      "name": "Abi Ballon League",
+      "type": "CREATOR",
+      "format": "EVERY_ROUND",
+      "inviteCode": "ABI-BALLON",
+      "imageUrl": "/media/leagues/abi-ballon.jpg",
+      "creatorId": "a6855e8c-17a6-3012-96e2-2baafa622463",
+      "seasonRounds": 14,
+      "roundsRemaining": 6,
+      "description": "Challenge the creator and climb the table.",
+      "members": [
+        {
+          "profileId": "a6855e8c-17a6-3012-96e2-2baafa622463",
+          "score": 1420,
+          "wins": 6
+        },
+        {
+          "profileId": "05fe36cb-8626-39e1-ac92-2d8011c3fbe3",
+          "score": 1210,
+          "wins": 3
+        },
+        {
+          "profileId": "6a6b242d-62ad-36db-b4e7-dace7b62d5ab",
+          "score": 1170,
+          "wins": 2
+        }
+      ]
+    }
+  ],
+  "rivalries": [
+    {
+      "id": "ad19d5fb-e6bb-3ca8-bd3f-c575d1c4923a",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "leftProfileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "rightProfileId": "d10c34fc-891e-38ec-96d9-eaa673221f4f",
+      "leftWins": 3,
+      "rightWins": 4,
+      "draws": 0,
+      "recentForm": [
+        "W",
+        "L",
+        "W",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "id": "29b3c5cf-eccc-3536-994b-4a18038efc02",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "leftProfileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "rightProfileId": "39100132-983b-30e8-8501-41d67544f2b3",
+      "leftWins": 5,
+      "rightWins": 2,
+      "draws": 0,
+      "recentForm": [
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "id": "29faffbb-7386-3123-b498-7148b0669c0f",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "leftProfileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "rightProfileId": "f70d195a-b9e2-3e9c-938e-14c040ee2d65",
+      "leftWins": 2,
+      "rightWins": 2,
+      "draws": 1,
+      "recentForm": [
+        "D",
+        "L",
+        "W",
+        "W",
+        "L"
+      ]
+    },
+    {
+      "id": "942a6db4-5168-3422-9f65-72f72c351c13",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "leftProfileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "rightProfileId": "fde4e0b2-67ea-34ae-9f4f-7ea23ecfd66c",
+      "leftWins": 4,
+      "rightWins": 3,
+      "draws": 0,
+      "recentForm": [
+        "L",
+        "W",
+        "W",
+        "L",
+        "W"
+      ]
+    },
+    {
+      "id": "420c2a9d-5c81-37b9-b7bd-2185d5d015f5",
+      "leagueId": "3c308748-9ee2-373c-ad90-a278abe91fda",
+      "leftProfileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "rightProfileId": "05fe36cb-8626-39e1-ac92-2d8011c3fbe3",
+      "leftWins": 3,
+      "rightWins": 2,
+      "draws": 0,
+      "recentForm": [
+        "W",
+        "L",
+        "W",
+        "L",
+        "W"
+      ]
+    },
+    {
+      "id": "19cd60de-8edd-3b68-9e9c-62e8bee87117",
+      "leagueId": "3c308748-9ee2-373c-ad90-a278abe91fda",
+      "leftProfileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "rightProfileId": "6a6b242d-62ad-36db-b4e7-dace7b62d5ab",
+      "leftWins": 4,
+      "rightWins": 2,
+      "draws": 0,
+      "recentForm": [
+        "W",
+        "L",
+        "W",
+        "L",
+        "W"
+      ]
+    },
+    {
+      "id": "fc0273ab-4b2e-33de-883b-c5871fa1ad0b",
+      "leagueId": "3c308748-9ee2-373c-ad90-a278abe91fda",
+      "leftProfileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "rightProfileId": "87bf2635-411f-39a7-95f8-b33f1b5617fc",
+      "leftWins": 5,
+      "rightWins": 2,
+      "draws": 0,
+      "recentForm": [
+        "W",
+        "L",
+        "W",
+        "L",
+        "W"
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "3d2bfd02-0b78-3c99-b8f3-26f4be921da0",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "fromProfileId": "39100132-983b-30e8-8501-41d67544f2b3",
+      "toProfileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "roundLabel": "European Superstars",
+      "status": "PENDING"
+    },
+    {
+      "id": "e24dcddd-4bfc-3dac-a18f-f6f199365045",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "fromProfileId": "f70d195a-b9e2-3e9c-938e-14c040ee2d65",
+      "toProfileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "roundLabel": "European Superstars",
+      "status": "PENDING"
+    },
+    {
+      "id": "bfd9f0bb-172c-3d9d-97c9-844fc727d0f2",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "fromProfileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "toProfileId": "d10c34fc-891e-38ec-96d9-eaa673221f4f",
+      "roundLabel": "Champions Night",
+      "status": "PENDING"
+    }
+  ],
+  "presets": [
+    {
+      "id": "TOP",
+      "text": "Top of the table again. Who is catching me this round?"
+    },
+    {
+      "id": "REMATCH",
+      "text": "Rematch? I am ready for round two."
+    },
+    {
+      "id": "SUB",
+      "text": "That substitution changed everything!"
+    },
+    {
+      "id": "LATE",
+      "text": "Never count me out before the 75th minute."
+    },
+    {
+      "id": "CAPTAIN",
+      "text": "Captain picked. No second thoughts."
+    },
+    {
+      "id": "GG",
+      "text": "GG everyone — that was close!"
+    },
+    {
+      "id": "HERO",
+      "text": "Home Hero delivered when it mattered."
+    },
+    {
+      "id": "CHASE",
+      "text": "See you at the top. The chase is on."
+    },
+    {
+      "id": "BENCH",
+      "text": "My bench has been waiting for this moment."
+    },
+    {
+      "id": "COFFEE",
+      "text": "Winner picks the coffee spot tomorrow."
+    },
+    {
+      "id": "DERBY",
+      "text": "Derby day. Bring your best five."
+    },
+    {
+      "id": "NERVES",
+      "text": "One goal away. This finish is going to be tense."
+    }
+  ],
+  "messages": [
+    {
+      "id": "3a96f120-bc73-3ff8-8e50-a071f0ae86c5",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "authorId": "d10c34fc-891e-38ec-96d9-eaa673221f4f",
+      "presetId": "TOP",
+      "minutesAgo": 12,
+      "reactions": {
+        "🔥": 3,
+        "😂": 1,
+        "🤝": 2,
+        "⚽": 1
+      }
+    },
+    {
+      "id": "d9fcac3e-3c29-3aba-9c81-c94e012c0779",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "authorId": "39100132-983b-30e8-8501-41d67544f2b3",
+      "presetId": "REMATCH",
+      "minutesAgo": 33,
+      "reactions": {
+        "🔥": 4,
+        "😂": 2,
+        "🤝": 3,
+        "⚽": 2
+      }
+    },
+    {
+      "id": "bf6039a0-6f70-3e66-acd2-d722e42d9391",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "authorId": "f70d195a-b9e2-3e9c-938e-14c040ee2d65",
+      "presetId": "SUB",
+      "minutesAgo": 54,
+      "reactions": {
+        "🔥": 5,
+        "😂": 3,
+        "🤝": 4,
+        "⚽": 3
+      }
+    },
+    {
+      "id": "7fbc56d5-5dc1-3686-80fb-e24702713fd5",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "authorId": "fde4e0b2-67ea-34ae-9f4f-7ea23ecfd66c",
+      "presetId": "LATE",
+      "minutesAgo": 75,
+      "reactions": {
+        "🔥": 6,
+        "😂": 4,
+        "🤝": 2,
+        "⚽": 4
+      }
+    },
+    {
+      "id": "0acbc155-9ef6-3526-afbb-a8a3fe415fa7",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "authorId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "presetId": "CAPTAIN",
+      "minutesAgo": 96,
+      "reactions": {
+        "🔥": 7,
+        "😂": 1,
+        "🤝": 3,
+        "⚽": 5
+      }
+    },
+    {
+      "id": "70070930-4a7e-3809-accb-5ee0bade5804",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "authorId": "1212fc82-365d-32ef-9a0f-b94b7bb55138",
+      "presetId": "GG",
+      "minutesAgo": 117,
+      "reactions": {
+        "🔥": 8,
+        "😂": 2,
+        "🤝": 4,
+        "⚽": 1
+      }
+    },
+    {
+      "id": "790d7f0d-33dc-336a-8135-45ff84b00853",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "authorId": "1f3064cf-dfe4-34c2-a392-3ab43987146e",
+      "presetId": "HERO",
+      "minutesAgo": 138,
+      "reactions": {
+        "🔥": 9,
+        "😂": 3,
+        "🤝": 2,
+        "⚽": 2
+      }
+    },
+    {
+      "id": "21755f41-e888-371f-be9e-5ac39d16362c",
+      "leagueId": "78163479-7501-336e-8ca1-374e9dc6a39d",
+      "authorId": "ee3a29c7-4c59-355e-824d-7c395c8adb2c",
+      "presetId": "CHASE",
+      "minutesAgo": 159,
+      "reactions": {
+        "🔥": 10,
+        "😂": 4,
+        "🤝": 3,
+        "⚽": 3
+      }
+    },
+    {
+      "id": "dba329ca-d149-33fa-b45c-c9d6c19ff422",
+      "leagueId": "3c308748-9ee2-373c-ad90-a278abe91fda",
+      "authorId": "05fe36cb-8626-39e1-ac92-2d8011c3fbe3",
+      "presetId": "TOP",
+      "minutesAgo": 12,
+      "reactions": {
+        "🔥": 3,
+        "😂": 1,
+        "🤝": 2,
+        "⚽": 1
+      }
+    },
+    {
+      "id": "6cd940d7-48fb-32b3-991c-0357bedeffa0",
+      "leagueId": "3c308748-9ee2-373c-ad90-a278abe91fda",
+      "authorId": "6a6b242d-62ad-36db-b4e7-dace7b62d5ab",
+      "presetId": "REMATCH",
+      "minutesAgo": 33,
+      "reactions": {
+        "🔥": 4,
+        "😂": 2,
+        "🤝": 3,
+        "⚽": 2
+      }
+    },
+    {
+      "id": "5a4972ca-7304-326d-8847-2a661e005c4b",
+      "leagueId": "3c308748-9ee2-373c-ad90-a278abe91fda",
+      "authorId": "87bf2635-411f-39a7-95f8-b33f1b5617fc",
+      "presetId": "SUB",
+      "minutesAgo": 54,
+      "reactions": {
+        "🔥": 5,
+        "😂": 3,
+        "🤝": 4,
+        "⚽": 3
+      }
+    },
+    {
+      "id": "0adcafc4-4862-35fc-abac-5ac2036f4513",
+      "leagueId": "3c308748-9ee2-373c-ad90-a278abe91fda",
+      "authorId": "e6e85959-8ad5-3f1d-9071-16c675820796",
+      "presetId": "LATE",
+      "minutesAgo": 75,
+      "reactions": {
+        "🔥": 6,
+        "😂": 4,
+        "🤝": 2,
+        "⚽": 4
+      }
+    },
+    {
+      "id": "90580ab6-8eb0-35ec-9498-8628ef07796e",
+      "leagueId": "3c308748-9ee2-373c-ad90-a278abe91fda",
+      "authorId": "ef07c343-d174-3a2f-972f-8910eaaf9f51",
+      "presetId": "CAPTAIN",
+      "minutesAgo": 96,
+      "reactions": {
+        "🔥": 7,
+        "😂": 1,
+        "🤝": 3,
+        "⚽": 5
+      }
+    },
+    {
+      "id": "4589547c-1ded-34aa-882b-5136d7e4d553",
+      "leagueId": "3c308748-9ee2-373c-ad90-a278abe91fda",
+      "authorId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "presetId": "GG",
+      "minutesAgo": 117,
+      "reactions": {
+        "🔥": 8,
+        "😂": 2,
+        "🤝": 4,
+        "⚽": 1
+      }
+    },
+    {
+      "id": "0b5eb0e6-5e7f-3605-a96a-5bab15f44e10",
+      "leagueId": "56c60f08-02c0-303b-9577-ecaf7f2860c7",
+      "authorId": "bda1ee8b-b247-3833-a1fd-132e40c4151c",
+      "presetId": "TOP",
+      "minutesAgo": 12,
+      "reactions": {
+        "🔥": 3,
+        "😂": 1,
+        "🤝": 2,
+        "⚽": 1
+      }
+    },
+    {
+      "id": "d298f15a-f901-308c-abee-748f2cfa0cfe",
+      "leagueId": "56c60f08-02c0-303b-9577-ecaf7f2860c7",
+      "authorId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "presetId": "REMATCH",
+      "minutesAgo": 33,
+      "reactions": {
+        "🔥": 4,
+        "😂": 2,
+        "🤝": 3,
+        "⚽": 2
+      }
+    },
+    {
+      "id": "d11cd0fb-f783-3178-9913-3c3aafbf65e2",
+      "leagueId": "56c60f08-02c0-303b-9577-ecaf7f2860c7",
+      "authorId": "05fe36cb-8626-39e1-ac92-2d8011c3fbe3",
+      "presetId": "SUB",
+      "minutesAgo": 54,
+      "reactions": {
+        "🔥": 5,
+        "😂": 3,
+        "🤝": 4,
+        "⚽": 3
+      }
+    },
+    {
+      "id": "b4a33f59-e003-3152-8b79-1fbe0aba3605",
+      "leagueId": "1a07d872-7cb1-34a6-8c2c-f059d68d75a8",
+      "authorId": "46f1b237-c4a0-35f7-bafe-896b5620df5f",
+      "presetId": "TOP",
+      "minutesAgo": 12,
+      "reactions": {
+        "🔥": 3,
+        "😂": 1,
+        "🤝": 2,
+        "⚽": 1
+      }
+    },
+    {
+      "id": "0334e681-d97e-37ea-8d4e-c10330cb9484",
+      "leagueId": "1a07d872-7cb1-34a6-8c2c-f059d68d75a8",
+      "authorId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "presetId": "REMATCH",
+      "minutesAgo": 33,
+      "reactions": {
+        "🔥": 4,
+        "😂": 2,
+        "🤝": 3,
+        "⚽": 2
+      }
+    },
+    {
+      "id": "72c1f0b7-5a10-3915-8e60-60cee501fdfa",
+      "leagueId": "1a07d872-7cb1-34a6-8c2c-f059d68d75a8",
+      "authorId": "05fe36cb-8626-39e1-ac92-2d8011c3fbe3",
+      "presetId": "SUB",
+      "minutesAgo": 54,
+      "reactions": {
+        "🔥": 5,
+        "😂": 3,
+        "🤝": 4,
+        "⚽": 3
+      }
+    },
+    {
+      "id": "1eab8fe1-91af-3647-80a7-b514dbdfc0c0",
+      "leagueId": "8901e5e6-a6d1-3224-a6cc-4cda12e0aade",
+      "authorId": "676251f3-7b82-3aa2-8395-5b74c1cc3b2d",
+      "presetId": "TOP",
+      "minutesAgo": 12,
+      "reactions": {
+        "🔥": 3,
+        "😂": 1,
+        "🤝": 2,
+        "⚽": 1
+      }
+    },
+    {
+      "id": "7f1f7a00-57ce-382f-ab2f-48f674210d1c",
+      "leagueId": "8901e5e6-a6d1-3224-a6cc-4cda12e0aade",
+      "authorId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "presetId": "REMATCH",
+      "minutesAgo": 33,
+      "reactions": {
+        "🔥": 4,
+        "😂": 2,
+        "🤝": 3,
+        "⚽": 2
+      }
+    },
+    {
+      "id": "1cc85a20-fefd-367b-9cdb-ab9a1f7025a5",
+      "leagueId": "8901e5e6-a6d1-3224-a6cc-4cda12e0aade",
+      "authorId": "05fe36cb-8626-39e1-ac92-2d8011c3fbe3",
+      "presetId": "SUB",
+      "minutesAgo": 54,
+      "reactions": {
+        "🔥": 5,
+        "😂": 3,
+        "🤝": 4,
+        "⚽": 3
+      }
+    },
+    {
+      "id": "7ddcde28-d144-3e33-aaa7-13c16b3deb02",
+      "leagueId": "046e1190-0e09-3ce2-acd3-689f64b37664",
+      "authorId": "a6855e8c-17a6-3012-96e2-2baafa622463",
+      "presetId": "TOP",
+      "minutesAgo": 12,
+      "reactions": {
+        "🔥": 3,
+        "😂": 1,
+        "🤝": 2,
+        "⚽": 1
+      }
+    },
+    {
+      "id": "48a4e2b8-82fe-3645-88c2-bf38ec85f3b2",
+      "leagueId": "046e1190-0e09-3ce2-acd3-689f64b37664",
+      "authorId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "presetId": "REMATCH",
+      "minutesAgo": 33,
+      "reactions": {
+        "🔥": 4,
+        "😂": 2,
+        "🤝": 3,
+        "⚽": 2
+      }
+    },
+    {
+      "id": "b0c0674e-933d-3c24-a3f2-2bd2417a460b",
+      "leagueId": "046e1190-0e09-3ce2-acd3-689f64b37664",
+      "authorId": "05fe36cb-8626-39e1-ac92-2d8011c3fbe3",
+      "presetId": "SUB",
+      "minutesAgo": 54,
+      "reactions": {
+        "🔥": 5,
+        "😂": 3,
+        "🤝": 4,
+        "⚽": 3
+      }
+    }
+  ],
+  "managers": [
+    {
+      "profileId": "05fe36cb-8626-39e1-ac92-2d8011c3fbe3",
+      "friendOf": [
+        "a85139c7-646c-3a4b-adf0-bfba2c631023"
+      ],
+      "averagePoints": 104.0,
+      "topFinishes": 5,
+      "recentRounds": 10,
+      "topForm": false,
+      "target": "TOP_HALF",
+      "multiplier": 1.5,
+      "recentForm": [
+        "L",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "profileId": "6a6b242d-62ad-36db-b4e7-dace7b62d5ab",
+      "friendOf": [
+        "a85139c7-646c-3a4b-adf0-bfba2c631023"
+      ],
+      "averagePoints": 107.7,
+      "topFinishes": 6,
+      "recentRounds": 10,
+      "topForm": true,
+      "target": "TOP_25_PERCENT",
+      "multiplier": 2.0,
+      "recentForm": [
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "profileId": "87bf2635-411f-39a7-95f8-b33f1b5617fc",
+      "friendOf": [
+        "a85139c7-646c-3a4b-adf0-bfba2c631023"
+      ],
+      "averagePoints": 111.4,
+      "topFinishes": 7,
+      "recentRounds": 10,
+      "topForm": true,
+      "target": "TOP_10_PERCENT",
+      "multiplier": 3.0,
+      "recentForm": [
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "profileId": "e6e85959-8ad5-3f1d-9071-16c675820796",
+      "friendOf": [
+        "a85139c7-646c-3a4b-adf0-bfba2c631023"
+      ],
+      "averagePoints": 115.1,
+      "topFinishes": 8,
+      "recentRounds": 10,
+      "topForm": false,
+      "target": "TOP_HALF",
+      "multiplier": 1.5,
+      "recentForm": [
+        "L",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "profileId": "ef07c343-d174-3a2f-972f-8910eaaf9f51",
+      "friendOf": [],
+      "averagePoints": 118.8,
+      "topFinishes": 9,
+      "recentRounds": 10,
+      "topForm": true,
+      "target": "TOP_25_PERCENT",
+      "multiplier": 2.0,
+      "recentForm": [
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "profileId": "030fff23-3373-3b5c-8a81-cbc8cd116423",
+      "friendOf": [],
+      "averagePoints": 122.5,
+      "topFinishes": 5,
+      "recentRounds": 10,
+      "topForm": true,
+      "target": "TOP_10_PERCENT",
+      "multiplier": 3.0,
+      "recentForm": [
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "profileId": "8110e4b9-d3e9-3556-add2-40aa53cf2e7a",
+      "friendOf": [],
+      "averagePoints": 126.2,
+      "topFinishes": 6,
+      "recentRounds": 10,
+      "topForm": false,
+      "target": "TOP_HALF",
+      "multiplier": 1.5,
+      "recentForm": [
+        "L",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "profileId": "d10c34fc-891e-38ec-96d9-eaa673221f4f",
+      "friendOf": [
+        "a85139c7-646c-3a4b-adf0-bfba2c631023"
+      ],
+      "averagePoints": 129.9,
+      "topFinishes": 7,
+      "recentRounds": 10,
+      "topForm": true,
+      "target": "TOP_25_PERCENT",
+      "multiplier": 2.0,
+      "recentForm": [
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "profileId": "39100132-983b-30e8-8501-41d67544f2b3",
+      "friendOf": [
+        "a85139c7-646c-3a4b-adf0-bfba2c631023"
+      ],
+      "averagePoints": 133.6,
+      "topFinishes": 8,
+      "recentRounds": 10,
+      "topForm": true,
+      "target": "TOP_10_PERCENT",
+      "multiplier": 3.0,
+      "recentForm": [
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "profileId": "f70d195a-b9e2-3e9c-938e-14c040ee2d65",
+      "friendOf": [
+        "a85139c7-646c-3a4b-adf0-bfba2c631023"
+      ],
+      "averagePoints": 137.3,
+      "topFinishes": 9,
+      "recentRounds": 10,
+      "topForm": false,
+      "target": "TOP_HALF",
+      "multiplier": 1.5,
+      "recentForm": [
+        "L",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "profileId": "bda1ee8b-b247-3833-a1fd-132e40c4151c",
+      "friendOf": [],
+      "averagePoints": 141.0,
+      "topFinishes": 5,
+      "recentRounds": 10,
+      "topForm": true,
+      "target": "TOP_25_PERCENT",
+      "multiplier": 2.0,
+      "recentForm": [
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "profileId": "46f1b237-c4a0-35f7-bafe-896b5620df5f",
+      "friendOf": [],
+      "averagePoints": 144.7,
+      "topFinishes": 6,
+      "recentRounds": 10,
+      "topForm": true,
+      "target": "TOP_10_PERCENT",
+      "multiplier": 3.0,
+      "recentForm": [
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "profileId": "676251f3-7b82-3aa2-8395-5b74c1cc3b2d",
+      "friendOf": [],
+      "averagePoints": 148.4,
+      "topFinishes": 7,
+      "recentRounds": 10,
+      "topForm": false,
+      "target": "TOP_HALF",
+      "multiplier": 1.5,
+      "recentForm": [
+        "L",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "profileId": "a6855e8c-17a6-3012-96e2-2baafa622463",
+      "friendOf": [],
+      "averagePoints": 152.1,
+      "topFinishes": 8,
+      "recentRounds": 10,
+      "topForm": true,
+      "target": "TOP_25_PERCENT",
+      "multiplier": 2.0,
+      "recentForm": [
+        "W",
+        "W",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "profileId": "a85139c7-646c-3a4b-adf0-bfba2c631023",
+      "friendOf": [
+        "05fe36cb-8626-39e1-ac92-2d8011c3fbe3",
+        "6a6b242d-62ad-36db-b4e7-dace7b62d5ab",
+        "87bf2635-411f-39a7-95f8-b33f1b5617fc",
+        "e6e85959-8ad5-3f1d-9071-16c675820796"
+      ],
+      "averagePoints": 126.2,
+      "topFinishes": 6,
+      "recentRounds": 10,
+      "topForm": true,
+      "target": "TOP_25_PERCENT",
+      "multiplier": 2.0,
+      "recentForm": [
+        "W",
+        "L",
+        "W",
+        "W",
+        "W"
+      ]
+    }
+  ]
+}

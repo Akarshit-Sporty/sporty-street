@@ -1,0 +1,3 @@
+sporty:
+  provider:
+    token: ${SPORTY_PROVIDER_TOKEN:local-demo-provider-token}

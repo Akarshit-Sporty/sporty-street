@@ -1,0 +1,74 @@
+[
+  {
+    "key": "lagos-ballers",
+    "imageUrl": "/media/leagues/lagos-ballers.jpg",
+    "subject": "Lagos",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Lagos-centre-from-executive-lounge-Continental-hotel-2026-IMG_7970.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Lagos-centre-from-executive-lounge-Continental-hotel-2026-IMG_7970.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "author": "FrankvEck",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "modification": "Wikimedia 640px thumbnail; no additional edits",
+    "sha256": "ec161d6b313da55630a6a93f71fd2c50727feab200c2f6f212363504981c2ade"
+  },
+  {
+    "key": "office-five",
+    "imageUrl": "/media/leagues/office-five.jpg",
+    "subject": "Association football",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Football_in_Bloomington,_Indiana,_1995.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/42/Football_in_Bloomington%2C_Indiana%2C_1995.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "author": "Rick Dikeman",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "modification": "Wikimedia 640px thumbnail; no additional edits",
+    "sha256": "33408d2683d571ca57fad80767b08f9ea01683bb0362a9e9db3f1b68d5d934c2"
+  },
+  {
+    "key": "mr-pundit",
+    "imageUrl": "/media/leagues/mr-pundit.jpg",
+    "subject": "Wembley Stadium",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:London_Wembley.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d2/London_Wembley.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "author": "Arne Müseler",
+    "license": "CC BY-SA 3.0 de",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+    "modification": "Wikimedia 640px thumbnail; no additional edits",
+    "sha256": "689d774977a2b2256d551750c53e9c780ec518db76ff5e751280b534f2a33147"
+  },
+  {
+    "key": "kay-football",
+    "imageUrl": "/media/leagues/kay-football.jpg",
+    "subject": "Anfield",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Liverpool_anfield_road_stadium.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Liverpool_anfield_road_stadium.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "author": "Arne Müseler",
+    "license": "CC BY-SA 3.0 de",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+    "modification": "Wikimedia 640px thumbnail; no additional edits",
+    "sha256": "e802a7a862fbd81a586b1915ab4f6bcf6322b1e8341a1f2acfe1d444bbc1d774"
+  },
+  {
+    "key": "samba-tactics",
+    "imageUrl": "/media/leagues/samba-tactics.jpg",
+    "subject": "Maracanã Stadium",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Maracana_2022.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Maracana_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "author": "Arne Müseler",
+    "license": "CC BY-SA 3.0 de",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+    "modification": "Wikimedia 640px thumbnail; no additional edits",
+    "sha256": "1a61f86351757156483a794f6ae142b1b914974c2247a63d6dffd9bc7f515242"
+  },
+  {
+    "key": "abi-ballon",
+    "imageUrl": "/media/leagues/abi-ballon.jpg",
+    "subject": "Camp Nou",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Camp_Nou_aerial.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Camp_Nou_aerial.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "author": "Oh-Barcelona.com from Barcelona, Spain",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "modification": "Wikimedia 640px thumbnail; no additional edits",
+    "sha256": "7d8bc283c2615ebb5d0c1820d00ab7f2f4d36ea329bb39891ae2da51dc9e67bb"
+  }
+]
